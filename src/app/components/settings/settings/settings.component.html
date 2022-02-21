@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Settings</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="content">
+    <ion-list inset="true" lines="none">
+      <ion-item button="true">
+        <ion-label>Import</ion-label>
+        <input type="file" id="import" (change)="import($event)" />
+      </ion-item>
+      <ion-item button="true" (click)="export()">
+        <ion-label>Export</ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-list inset="true" lines="none">
+      <ion-item>
+        <ion-label class="themeLabel">Theme</ion-label>
+        <ion-select interface="popover" [(ngModel)]="selectedTheme">
+          <ion-select-option *ngFor="let theme of themes" [value]="theme">
+            {{theme}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <ion-list inset="true" lines="none">
+      <ion-item>
+        <ion-label>Daily reminder</ion-label>
+        <ion-toggle [(ngModel)]="reminderEnabled" (ngModelChange)="onReminderEnabledChanged()"></ion-toggle>
+      </ion-item>
+      <ion-item *ngIf="reminderEnabled" button="true" detail="false" (click)="toggleReminderTimePicker()">
+        <ion-label>Time</ion-label>
+        <ion-text style="padding-right: 4px;" color="{{showReminderTimePicker ? 'primary' : 'dark'}}">{{reminderTime}}
+        </ion-text>
+      </ion-item>
+      <ion-datetime style="--background: medium" *ngIf="reminderEnabled && showReminderTimePicker" size="cover"
+        presentation="time" hourCycle="23" color="primary" [(ngModel)]="reminderTime"
+        (ngModelChange)="onReminderTimeChanged()">
+      </ion-datetime>
+    </ion-list>
+
+    <ion-list inset="true" lines="none">
+      <ion-item lines="none" (click)="checkForUpdate()">
+        <ion-label>Vocabulary - Version 0.1.19</ion-label>
+        <ion-spinner *ngIf="checkingForUpdate"></ion-spinner>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-label>© Sebastian Bäumlisberger</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

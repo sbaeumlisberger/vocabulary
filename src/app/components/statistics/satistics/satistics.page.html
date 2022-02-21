@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Statistics
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Statistics</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="content ion-padding-start ion-padding-end">
+    <br>
+    <p style="font-weight: bold;">Total words: {{vocabularyCount}}</p>
+
+    <p style="margin-top: 48px;">Never known or practiced: {{neverKnownOrPracticedPercent | number:'1.0-0'}}%
+      ({{neverKnownOrPracticedCount}} words)</p>
+    <ion-progress-bar [value]="neverKnownOrPracticedPercent"></ion-progress-bar>
+
+    <p style="margin-top: 48px;">Known at least once: {{atLeastOncePercent | number:'1.0-0'}}% ({{atLeastOnceCount}}
+      words)</p>
+    <ion-progress-bar [value]="atLeastOncePercent"></ion-progress-bar>
+
+    <p style="margin-top: 48px;">On the right track: {{onTheRightTackPercent | number:'1.0-0'}}%
+      ({{onTheRightTackCount}} words)</p>
+    <ion-progress-bar [value]="onTheRightTackPercent"></ion-progress-bar>
+
+    <p style="margin-top: 48px;">Good: {{goodPercent | number:'1.0-0'}}% ({{goodCount}} words)</p>
+    <ion-progress-bar [value]="goodPercent"></ion-progress-bar>
+
+    <p style="margin-top: 48px;">Very good: {{veryGoodPercent | number:'1.0-0'}}% ({{veryGoodCount}} words)</p>
+    <ion-progress-bar [value]="veryGoodPercent"></ion-progress-bar>
+  </div>
+
+</ion-content>

@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Practice
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Practice</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="content">
+    <ion-card [routerLink]="['flashcards', 'random']" routerDirection="forward">
+      <ion-card-header>
+        <ion-card-title>Random</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        It is randomly chosen whether a word must be translated from the foreign language to the native language or vice
+        versa.
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card [routerLink]="['flashcards', 'foreign-to-native']" routerDirection="forward">
+      <ion-card-header>
+        <ion-card-title>Foreign to Native</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        All words must be translated from the foreign language into the native language.
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card [routerLink]="['flashcards', 'native-to-foreign']" routerDirection="forward">
+      <ion-card-header>
+        <ion-card-title>Native to Foreign</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        All words must be translated from the native language into the foreign language.
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Practice
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Practice</ion-title>
+    </ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-header>
+
+  <div class="content">
+
+    <div *ngIf="!finished">
+      <ion-grid class="ion-padding" style="max-width: 440px;">
+        <ion-row>
+          <ion-col *ngFor="let result of results;">
+            <div *ngIf="result===true" class="progressDot" style="background: #2dd36f;"></div>
+            <div *ngIf="result===false" class="progressDot" style="background: #eb445a;"></div>
+            <div *ngIf="result===undefined" class="progressDot" style="background: #92949c;"></div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div id="flashcard" #flashcard (window:resize)="0" [ngStyle]="{'height.px': flashcard.offsetWidth}">
+        <ion-card #flashcard style="height: 100%; margin-inline: 0px;">
+          <ion-card-content style="height: 100%;">
+            <ion-grid style="height: 100%;">
+              <ion-row style="height: 100%;" class="ion-align-items-center">
+                <ion-col class="ion-text-center">
+                  <ion-label *ngIf="!rotated">{{flashcardFrontText}}</ion-label>
+                  <ion-label *ngIf="rotated">{{flashcardBackText}}</ion-label>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </div>
+      <br>
+      <ion-grid class="ion-padding" style="max-width: 600px;">
+        <ion-row *ngIf="!rotated">
+          <ion-col class="ion-text-center">
+            <ion-icon size="large" name="sync-outline" (click)="rotateCard()"></ion-icon>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="rotated">
+          <ion-col class="ion-text-center">
+            <ion-icon size="large" name="thumbs-down-outline" (click)="markAsWrong()"></ion-icon>
+          </ion-col>
+          <ion-col class="ion-text-center">
+            <ion-icon size="large" name="thumbs-up-outline" (click)="markAsCorrect()"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div *ngIf="finished">
+      <h1 style="text-align: center; margin-top: 128px;">Finished!</h1>
+
+      <p style="width: 100%; text-align: center; margin-top: 128px;">{{correctPercentage | number:'1.0-0'}}% correct</p>
+
+      <ion-button style="margin-top: 128px;" class="stretchedButton" (click)="goBack()">
+        <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+        <ion-label slot="end">Back</ion-label>
+      </ion-button>
+      <ion-button style="margin-top: 16px;" class="stretchedButton" (click)="continuePractice()">
+        <ion-icon slot="start" name="reload"></ion-icon>
+        <ion-label slot="end">Continue</ion-label>
+      </ion-button>
+    </div>
+
+  </div>
+
+</ion-content>
