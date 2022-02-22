@@ -19,21 +19,21 @@
 
     <p style="margin-top: 48px;">Never known or practiced: {{neverKnownOrPracticedPercent | number:'1.0-0'}}%
       ({{neverKnownOrPracticedCount}} words)</p>
-    <ion-progress-bar [value]="neverKnownOrPracticedPercent"></ion-progress-bar>
+    <ion-progress-bar [value]="neverKnownOrPracticedPercent/100"></ion-progress-bar>
 
     <p style="margin-top: 48px;">Known at least once: {{atLeastOncePercent | number:'1.0-0'}}% ({{atLeastOnceCount}}
       words)</p>
-    <ion-progress-bar [value]="atLeastOncePercent"></ion-progress-bar>
+    <ion-progress-bar [value]="atLeastOncePercent/100"></ion-progress-bar>
 
     <p style="margin-top: 48px;">On the right track: {{onTheRightTackPercent | number:'1.0-0'}}%
       ({{onTheRightTackCount}} words)</p>
-    <ion-progress-bar [value]="onTheRightTackPercent"></ion-progress-bar>
+    <ion-progress-bar [value]="onTheRightTackPercent/100"></ion-progress-bar>
 
     <p style="margin-top: 48px;">Good: {{goodPercent | number:'1.0-0'}}% ({{goodCount}} words)</p>
-    <ion-progress-bar [value]="goodPercent"></ion-progress-bar>
+    <ion-progress-bar [value]="goodPercent/100"></ion-progress-bar>
 
     <p style="margin-top: 48px;">Very good: {{veryGoodPercent | number:'1.0-0'}}% ({{veryGoodCount}} words)</p>
-    <ion-progress-bar [value]="veryGoodPercent"></ion-progress-bar>
+    <ion-progress-bar [value]="veryGoodPercent/100"></ion-progress-bar>
   </div>
 
 </ion-content>
