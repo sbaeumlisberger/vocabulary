@@ -20,19 +20,18 @@ export class ThemeService {
   initialize() {
     this.applyTheme(this.getTheme());
 
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", event => {
-      if (this.getTheme() === Theme.System) {
-        if (event.matches) {
-          this.applyTheme(Theme.Dark);
+    window.matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", event => {
+        if (this.getTheme() === Theme.System) {
+          if (event.matches) {
+            this.applyTheme(Theme.Dark);
+          }
+          else {
+            this.applyTheme(Theme.Light);
+          }
         }
-        else {
-          this.applyTheme(Theme.Light);
-        }
-      }
-    });
+      });
   }
-
-
 
   getTheme() {
     return localStorage.getItem(ThemeService.THEME_STORAGE_KEY) as Theme ?? Theme.System;
