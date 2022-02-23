@@ -43,7 +43,7 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
   }
 
   ionViewWillEnter(): void {
-    this.themeService.overwriteStatusBarColor('#f4f5f8');
+    this.themeService.overwriteStatusBarColor('#f2f2f7');
   }
 
   async import(event: Event) {

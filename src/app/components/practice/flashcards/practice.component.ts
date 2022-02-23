@@ -49,7 +49,7 @@ export class PracticeComponent implements OnInit {
   }
 
   ionViewWillEnter(): void {
-    //this.themeService.overwriteStatusBarColor('#ffffff');
+    this.themeService.overwriteStatusBarColor('#f2f2f7');
   }
 
   rotateCard() {

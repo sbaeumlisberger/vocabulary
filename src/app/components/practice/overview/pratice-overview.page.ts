@@ -12,7 +12,7 @@ export class PraticeOverviewPage {
   }
 
   async ionViewWillEnter() {
-    this.themeService.overwriteStatusBarColor('#f4f5f8');
+    this.themeService.overwriteStatusBarColor('#f2f2f7');
   }
 
 }
