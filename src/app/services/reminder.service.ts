@@ -54,6 +54,8 @@ export class ReminderService {
     let reminderDate = new Date();
     reminderDate.setHours(time.hours);
     reminderDate.setMinutes(time.minutes);
+    reminderDate.setSeconds(0);
+    reminderDate.setMilliseconds(0);
     let timeoutMilliseconds = reminderDate.getTime() - Date.now();
 
     if (timeoutMilliseconds < 10) {
