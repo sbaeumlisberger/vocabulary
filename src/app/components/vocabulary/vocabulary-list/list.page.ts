@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular/standalone';
 import { NgEventBus } from 'ng-event-bus';
 import { AddVocabularyComponent } from '../add-vocabulary/add-vocabulary.component';
 import { VocabularyAddedEvent } from '../../../events/vocabulary-added.event';
@@ -8,6 +8,8 @@ import { VocabularyUpdatedEvent } from '../../../events/vocabulary-updated.event
 import { IVocable } from '../../../models/vocable.model';
 import { VocabularyService } from '../../../services/vocabulary.service';
 import { ThemeService } from 'src/app/services/theme.service';
+import { addIcons } from "ionicons";
+import { add, trash } from "ionicons/icons";
 
 @Component({
   selector: 'vocabulary-list-page',
@@ -42,6 +44,7 @@ export class VocabularyListPage implements OnInit {
       this.vocabulary = []
       await this.loadVocabulary();
     });
+    addIcons({ add, trash });
   }
 
   async ngOnInit() {
@@ -87,7 +90,6 @@ export class VocabularyListPage implements OnInit {
   private async openAddVocabularyComponent(componentProps = {}) {
     const modal = await this.modalController.create({
       component: AddVocabularyComponent,
-      swipeToClose: true,
       presentingElement: document.querySelector('ion-router-outlet'),
       componentProps: componentProps
     });

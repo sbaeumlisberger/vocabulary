@@ -1,4 +1,3 @@
-import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -7,14 +6,36 @@ import { PraticeOverviewPage } from './overview/pratice-overview.page';
 
 import { Tab2PageRoutingModule } from './practice-routing.module';
 import { PracticeComponent } from './flashcards/practice.component';
+import { IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardContent, IonLabel, IonIcon, IonButton, IonCardHeader, IonCardTitle } from "@ionic/angular/standalone";
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    Tab2PageRoutingModule
-  ],
-  declarations: [PraticeOverviewPage, PracticeComponent]
+    imports: [
+        CommonModule,
+        FormsModule,
+        Tab2PageRoutingModule,
+        IonHeader,
+        IonToolbar,
+        IonTitle,
+        IonButtons,
+        IonBackButton,
+        IonContent,
+        IonGrid,
+        IonRow,
+        IonCol,
+        IonCard,
+        IonCardContent,
+        IonLabel,
+        IonIcon,
+        IonButton,
+        IonHeader,
+        IonToolbar,
+        IonTitle,
+        IonContent,
+        IonCard,
+        IonCardHeader,
+        IonCardTitle,
+        IonCardContent
+    ],
+    declarations: [PraticeOverviewPage, PracticeComponent]
 })
-export class PracticeModule {}
+export class PracticeModule { }

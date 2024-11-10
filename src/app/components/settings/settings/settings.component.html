@@ -26,8 +26,7 @@
 
     <ion-list inset="true" lines="none">
       <ion-item>
-        <ion-label class="themeLabel">Theme</ion-label>
-        <ion-select interface="popover" [(ngModel)]="selectedTheme">
+        <ion-select label="Theme" interface="popover" [(ngModel)]="selectedTheme">
           <ion-select-option *ngFor="let theme of themes" [value]="theme">
             {{theme}}
           </ion-select-option>
@@ -37,8 +36,8 @@
 
     <ion-list inset="true" lines="none">
       <ion-item>
-        <ion-label>Daily reminder</ion-label>
-        <ion-toggle [(ngModel)]="reminderEnabled" (ngModelChange)="onReminderEnabledChanged()"></ion-toggle>
+        <ion-toggle [(ngModel)]="reminderEnabled" (ngModelChange)="onReminderEnabledChanged()">Daily
+          reminder</ion-toggle>
       </ion-item>
       <ion-item *ngIf="reminderEnabled" button="true" detail="false" (click)="toggleReminderTimePicker()">
         <ion-label>Time</ion-label>
@@ -46,7 +45,7 @@
         </ion-text>
       </ion-item>
       <ion-datetime style="--background: medium" *ngIf="reminderEnabled && showReminderTimePicker" size="cover"
-        presentation="time" hourCycle="23" color="primary" [(ngModel)]="reminderTime"
+        presentation="time" hourCycle="h23" color="primary" [(ngModel)]="reminderTime"
         (ngModelChange)="onReminderTimeChanged()">
       </ion-datetime>
     </ion-list>

@@ -4,7 +4,7 @@ import { RouteReuseStrategy } from '@angular/router';
 
 import { NgEventBus } from 'ng-event-bus';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicRouteStrategy, provideIonicAngular, IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,18 +12,19 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(),//{ mode: 'ios' }
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
-    AppRoutingModule
-  ],
-  providers: [
-    NgEventBus,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
-  ],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
+        AppRoutingModule,
+        IonApp,
+        IonRouterOutlet
+    ],
+    providers: [
+        NgEventBus,
+        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+        provideIonicAngular()
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

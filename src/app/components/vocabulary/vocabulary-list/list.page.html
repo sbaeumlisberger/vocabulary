@@ -17,8 +17,8 @@
   </ion-header>
 
   <div class="content">
-    <ion-searchbar debounce="200" (ionChange)="search($event)"></ion-searchbar>
-  
+    <ion-searchbar debounce="200" (ionInput)="search($event)"></ion-searchbar>
+
     <ion-list>
       <ion-item-sliding *ngFor="let vocable of vocabulary">
         <ion-item (click)="editVocable(vocable)">

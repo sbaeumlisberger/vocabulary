@@ -4,6 +4,8 @@ import { Vocable } from 'src/app/models/vocable.model';
 import { PracticeService } from 'src/app/services/practice.service';
 import { Location } from '@angular/common';
 import { ThemeService } from 'src/app/services/theme.service';
+import { addIcons } from "ionicons";
+import { syncOutline, thumbsDownOutline, thumbsUpOutline, arrowBackOutline, reload } from "ionicons/icons";
 
 enum Mode {
   RANDOM = 'random',
@@ -39,6 +41,7 @@ export class PracticeComponent implements OnInit {
   private mode: Mode;
 
   constructor(private route: ActivatedRoute, private practiceService: PracticeService, private location: Location, private themeService: ThemeService) {
+    addIcons({ syncOutline, thumbsDownOutline, thumbsUpOutline, arrowBackOutline, reload });
   }
 
   ngOnInit() {
