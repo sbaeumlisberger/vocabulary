@@ -36,10 +36,15 @@
         <ion-card #flashcard style="height: 100%; margin-inline: 0px;">
           <ion-card-content style="height: 100%;">
             <ion-grid style="height: 100%;">
-              <ion-row style="height: 100%;" class="ion-align-items-center">
+              <ion-row style="height: 80%;" class="ion-align-items-center">
                 <ion-col class="ion-text-center">
                   <ion-label *ngIf="!rotated">{{flashcardFrontText}}</ion-label>
                   <ion-label *ngIf="rotated">{{flashcardBackText}}</ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-align-items-center">
+                <ion-col class="ion-text-center">
+                  <ion-icon size="large" name="volume-medium-outline" (click)="speak()"></ion-icon>
                 </ion-col>
               </ion-row>
             </ion-grid>

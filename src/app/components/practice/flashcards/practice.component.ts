@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Vocable } from 'src/app/models/vocable.model';
 import { PracticeService } from 'src/app/services/practice.service';
 import { Location } from '@angular/common';
 import { ThemeService } from 'src/app/services/theme.service';
 import { addIcons } from "ionicons";
-import { syncOutline, thumbsDownOutline, thumbsUpOutline, arrowBackOutline, reload } from "ionicons/icons";
+import { syncOutline, thumbsDownOutline, thumbsUpOutline, arrowBackOutline, reload, volumeMediumOutline } from "ionicons/icons";
+import { ViewWillEnter, ViewWillLeave } from '@ionic/angular';
 
-enum Mode {
+enum PracticeMode {
   RANDOM = 'random',
   FOREIGN_TO_NATIVE = 'foreign-to-native',
   NATIVE_TO_FOREIGN = 'native-to-foreign'
@@ -18,7 +19,7 @@ enum Mode {
   templateUrl: './practice.component.html',
   styleUrls: ['./practice.component.scss'],
 })
-export class PracticeComponent implements OnInit {
+export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
 
   flashcardFrontText: string = "";
 
@@ -38,10 +39,20 @@ export class PracticeComponent implements OnInit {
 
   private index: number = -1;
 
-  private mode: Mode;
+  private mode: PracticeMode;
+
+  private flashcardFrontLanguage = "de-DE";
+  private flashcardBackLanguage = "en-UK"
+
+  private knownAbbreviations = [
+    { abbreviation: 'sth.', word: 'something', },
+    { abbreviation: 'etw.', word: 'etwas', },
+    { abbreviation: 'sb.', word: 'somebody', },
+    { abbreviation: 'jdn.', word: 'jemanden' }
+  ]
 
   constructor(private route: ActivatedRoute, private practiceService: PracticeService, private location: Location, private themeService: ThemeService) {
-    addIcons({ syncOutline, thumbsDownOutline, thumbsUpOutline, arrowBackOutline, reload });
+    addIcons({ syncOutline, thumbsDownOutline, thumbsUpOutline, arrowBackOutline, reload, volumeMediumOutline });
   }
 
   ngOnInit() {
@@ -55,8 +66,22 @@ export class PracticeComponent implements OnInit {
     this.themeService.overwriteStatusBarColor('#f2f2f7');
   }
 
+  ionViewWillLeave() {
+    speechSynthesis.cancel();
+  }
+
   rotateCard() {
     this.rotated = true;
+  }
+
+  speak() {
+    let text = this.rotated ? this.flashcardBackText : this.flashcardFrontText;
+    this.knownAbbreviations.forEach(entry => text = text.replaceAll(entry.abbreviation, entry.word))
+    const language = this.rotated ? this.flashcardBackLanguage : this.flashcardFrontLanguage;
+    let utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = language;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utterance);
   }
 
   async markAsCorrect() {
@@ -107,17 +132,21 @@ export class PracticeComponent implements OnInit {
 
   private updateFlashcard() {
     let mode = this.mode;
-    if (mode == Mode.RANDOM) {
-      mode = Math.random() >= 0.5 ? Mode.FOREIGN_TO_NATIVE : Mode.NATIVE_TO_FOREIGN
+    if (mode == PracticeMode.RANDOM) {
+      mode = Math.random() >= 0.5 ? PracticeMode.FOREIGN_TO_NATIVE : PracticeMode.NATIVE_TO_FOREIGN
     }
     switch (mode) {
-      case Mode.FOREIGN_TO_NATIVE:
+      case PracticeMode.FOREIGN_TO_NATIVE:
         this.flashcardFrontText = this.currentVocable.foreignMeaning;
         this.flashcardBackText = this.currentVocable.nativeMeanings.join(', ');
+        this.flashcardFrontLanguage = "en-UK";
+        this.flashcardBackLanguage = "de-DE";
         break;
-      case Mode.NATIVE_TO_FOREIGN:
+      case PracticeMode.NATIVE_TO_FOREIGN:
         this.flashcardFrontText = this.currentVocable.nativeMeanings.join(', ');
         this.flashcardBackText = this.currentVocable.foreignMeaning;
+        this.flashcardFrontLanguage = "de-DE";
+        this.flashcardBackLanguage = "en-UK";
         break;
     }
   }
