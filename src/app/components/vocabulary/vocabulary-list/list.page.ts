@@ -9,7 +9,8 @@ import { IVocable } from '../../../models/vocable.model';
 import { VocabularyService } from '../../../services/vocabulary.service';
 import { ThemeService } from 'src/app/services/theme.service';
 import { addIcons } from "ionicons";
-import { add, trash } from "ionicons/icons";
+import { add, alertCircleOutline, arrowForwardCircleOutline, arrowUpCircleOutline, checkmarkCircleOutline, checkmarkDoneCircleOutline, chevronForwardCircleOutline, closeCircleOutline, trash } from "ionicons/icons";
+import { PracticeLevel } from 'src/app/models/practice-level.model';
 
 @Component({
   selector: 'vocabulary-list-page',
@@ -44,14 +45,14 @@ export class VocabularyListPage implements OnInit {
       this.vocabulary = []
       await this.loadVocabulary();
     });
-    addIcons({ add, trash });
+    addIcons({ add, trash, alertCircleOutline, arrowForwardCircleOutline, arrowUpCircleOutline, checkmarkCircleOutline, checkmarkDoneCircleOutline });
   }
 
   async ngOnInit() {
     await this.loadVocabulary();
   }
 
-  async ionViewWillEnter() {
+  ionViewWillEnter() {
     this.themeService.overwriteStatusBarColor('#ffffff');
   }
 
@@ -85,6 +86,36 @@ export class VocabularyListPage implements OnInit {
 
   async addVocable() {
     this.openAddVocabularyComponent();
+  }
+
+  toIcon(vocable: IVocable) {
+    switch (vocable.practiceLevel) {
+      case PracticeLevel.NeverKnownOrPracticed:
+        return vocable.practicedCount > 0 ? "alert-circle-outline" : "";
+      case PracticeLevel.AtLeastOnceKnown:
+        return "arrow-forward-circle-outline";
+      case PracticeLevel.OnTheRightTrack:
+        return "arrow-up-circle-outline";
+      case PracticeLevel.Good:
+        return "checkmark-circle-outline";
+      case PracticeLevel.VeryGood:
+        return "checkmark-done-circle-outline";
+    }
+  }
+
+  toColor(vocable: IVocable) {
+    switch (vocable.practiceLevel) {
+      case PracticeLevel.NeverKnownOrPracticed:
+        return "#de5d6e";
+      case PracticeLevel.AtLeastOnceKnown:
+        return "#ffb509";
+      case PracticeLevel.OnTheRightTrack:
+        return "#636eeb";
+      case PracticeLevel.Good:
+        return "#2dd36f";
+      case PracticeLevel.VeryGood:
+        return "#2dd36f";
+    }
   }
 
   private async openAddVocabularyComponent(componentProps = {}) {
