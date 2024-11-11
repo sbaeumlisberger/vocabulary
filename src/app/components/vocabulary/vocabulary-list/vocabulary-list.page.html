@@ -26,7 +26,7 @@
             <h2>{{vocable.foreignMeaning}}</h2>
             <p>{{vocable.nativeMeanings.join(', ')}}</p>
           </ion-label>
-          <ion-icon slot="end" size="small" [name]="toIcon(vocable)" [style]="{'color': toColor(vocable)}" />
+          <ion-icon slot="start" size="small" [name]="toIcon(vocable)" [style]="{'color': toColor(vocable)}" />
         </ion-item>
         <ion-item-options side="end">
           <ion-item-option color="danger" (click)="deleteVocable(vocable)">

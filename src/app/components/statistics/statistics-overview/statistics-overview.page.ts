@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ViewWillEnter } from '@ionic/angular/standalone';
+import { addIcons } from "ionicons";
+import { checkmarkOutline, rocketOutline, schoolOutline, trendingUpOutline, trophyOutline } from "ionicons/icons";
+import { ThemeService } from 'src/app/services/theme.service';
 import { PracticeLevel } from '../../../models/practice-level.model';
 import { StatisticsService } from '../../../services/statistics.service';
-import { ViewWillEnter } from '@ionic/angular/standalone';
-import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
-    selector: 'satistics-page',
-    templateUrl: 'satistics.page.html',
-    styleUrls: ['satistics.page.scss'],
+    selector: 'statistics-overview-page',
+    templateUrl: 'statistics-overview.page.html',
+    styleUrls: ['statistics-overview.page.scss'],
 })
-export class SatisticsPage implements ViewWillEnter {
+export class SatisticsOverviewPage implements ViewWillEnter {
 
     vocabularyCount: number = 0;
 
@@ -28,7 +31,10 @@ export class SatisticsPage implements ViewWillEnter {
     veryGoodCount: number = 0;
     veryGoodPercent: number = 0;
 
-    constructor(private statisticsService: StatisticsService, private themeService: ThemeService) {
+    praticeLevelEnum = PracticeLevel;
+
+    constructor(private readonly statisticsService: StatisticsService, private readonly themeService: ThemeService, private readonly router: Router) {
+        addIcons({ rocketOutline, schoolOutline, trendingUpOutline, checkmarkOutline, trophyOutline });
     }
 
     async ionViewWillEnter() {
@@ -55,5 +61,7 @@ export class SatisticsPage implements ViewWillEnter {
         this.veryGoodPercent = this.veryGoodCount / this.vocabularyCount * 100;
     }
 
-
+    showList(practiceLevel: PracticeLevel) {
+        this.router.navigate(['statistics/level-list', practiceLevel])
+    }
 }

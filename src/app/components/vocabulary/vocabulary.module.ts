@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { VocabularyListPage } from './vocabulary-list/list.page';
+import { VocabularyListPage } from './vocabulary-list/vocabulary-list.page';
 
 import { ListTabPageRoutingModule } from './vocabulary-routing.module';
 import { AddVocabularyComponent } from './add-vocabulary/add-vocabulary.component';

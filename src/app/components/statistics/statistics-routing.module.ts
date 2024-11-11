@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SatisticsPage } from './satistics/satistics.page';
+import { SatisticsOverviewPage } from './statistics-overview/statistics-overview.page';
+import { LevelListComponent } from './level-list/level-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SatisticsPage,
+    component: SatisticsOverviewPage,
+  },
+  {
+    path: 'level-list/:praticeLevel',
+    component: LevelListComponent,
   }
 ];
 
@@ -13,4 +18,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class StatisticsRoutingModule {}
+export class StatisticsRoutingModule { }

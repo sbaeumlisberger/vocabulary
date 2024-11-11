@@ -27,6 +27,10 @@ export class VocabularyService {
     return await this.db.vocabulary.reverse().offset(offset).limit(limit).toArray();
   }
 
+  async loadForPracticeLevel(practiceLevel: PracticeLevel, offset: number, limit: number): Promise<IVocable[]> {
+    return await this.db.vocabulary.reverse().filter(v => v.practiceLevel == practiceLevel).offset(offset).limit(limit).toArray();
+  }
+
   async search(query: string, limit: number = 10): Promise<IVocable[]> {
     query = query.toLowerCase();
     return await this.db.vocabulary.filter(v => v.foreignMeaning.toLowerCase().includes(query) || !!v.nativeMeanings.find(nm => nm.toLowerCase().includes(query))).limit(limit).toArray();
@@ -57,7 +61,7 @@ export class VocabularyService {
   }
 
   async import(vocabulary: IVocable[]): Promise<void> {
-    await this.db.vocabulary.bulkPut(vocabulary);    
+    await this.db.vocabulary.bulkPut(vocabulary);
     this.eventBus.cast(VocabularyImportedEvent.ID, new VocabularyImportedEvent());
   }
 

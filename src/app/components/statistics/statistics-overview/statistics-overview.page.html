@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Statistics
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Statistics</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="content ion-padding-start ion-padding-end">
+    <br>
+    <p style="font-weight: bold;">Total words: {{vocabularyCount}}</p>
+
+    <div (click)="showList(praticeLevelEnum.NeverKnownOrPracticed)">
+      <div class="level-header">
+        <ion-icon icon="rocket-outline"></ion-icon>
+        <span>Never known or practiced: {{neverKnownOrPracticedPercent | number:'1.0-0'}}%
+          ({{neverKnownOrPracticedCount}}
+          words)</span>
+      </div>
+      <ion-progress-bar [value]="neverKnownOrPracticedPercent/100"></ion-progress-bar>
+    </div>
+
+    <div (click)="showList(praticeLevelEnum.AtLeastOnceKnown)">
+      <div class="level-header">
+        <ion-icon icon="school-outline"> </ion-icon>
+        <span>Known at least once: {{atLeastOncePercent | number:'1.0-0'}}% ({{atLeastOnceCount}} words)</span>
+      </div>
+      <ion-progress-bar [value]="atLeastOncePercent/100"></ion-progress-bar>
+    </div>
+
+    <div (click)="showList(praticeLevelEnum.OnTheRightTrack)">
+      <div class="level-header">
+        <ion-icon icon="trending-up-outline"> </ion-icon>
+        <span>On the right track: {{onTheRightTackPercent | number:'1.0-0'}}% ({{onTheRightTackCount}} words)</span>
+      </div>
+      <ion-progress-bar [value]="onTheRightTackPercent/100"></ion-progress-bar>
+    </div>
+
+    <div (click)="showList(praticeLevelEnum.Good)">
+      <div class="level-header">
+        <ion-icon icon="checkmark-outline"></ion-icon>
+        <span>Good: {{goodPercent | number:'1.0-0'}}% ({{goodCount}} words)</span>
+      </div>
+      <ion-progress-bar [value]="goodPercent/100"></ion-progress-bar>
+    </div>
+
+    <div (click)="showList(praticeLevelEnum.VeryGood)">
+      <div class="level-header">
+        <ion-icon icon="trophy-outline"></ion-icon>
+        <span>Very good: {{veryGoodPercent | number:'1.0-0'}}% ({{veryGoodCount}} words)</span>
+      </div>
+      <ion-progress-bar [value]="veryGoodPercent/100"></ion-progress-bar>
+    </div>
+
+  </div>
+
+</ion-content>

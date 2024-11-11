@@ -9,7 +9,7 @@
   "shortcuts": [
     {
       "name": "Practice",
-      "url": "/tabs/practice/flashcards/random",
+      "url": "/practice/flashcards/random",
       "icons": [
         {
           "src": "assets/icons/practice-shortcut-96x96.png",

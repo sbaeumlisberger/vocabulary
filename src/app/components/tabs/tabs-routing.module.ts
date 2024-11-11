@@ -4,7 +4,12 @@ import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
+    redirectTo: '/vocabulary',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
     component: TabsPage,
     children: [
       {
@@ -23,19 +28,9 @@ const routes: Routes = [
       {
         path: 'settings',
         loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule)
-      },
-      {
-        path: '',
-        redirectTo: '/tabs/vocabulary',
-        pathMatch: 'full'
       }
     ]
   },
-  {
-    path: '',
-    redirectTo: '/tabs/vocabulary',
-    pathMatch: 'full'
-  }
 ];
 
 @NgModule({

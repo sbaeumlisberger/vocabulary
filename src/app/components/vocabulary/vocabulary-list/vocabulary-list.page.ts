@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular/standalone';
+import { addIcons } from "ionicons";
+import { add, checkmarkOutline, hourglassOutline, rocketOutline, schoolOutline, trash, trendingUpOutline, trophyOutline } from "ionicons/icons";
 import { NgEventBus } from 'ng-event-bus';
-import { AddVocabularyComponent } from '../add-vocabulary/add-vocabulary.component';
+import { PracticeLevel } from 'src/app/models/practice-level.model';
+import { ThemeService } from 'src/app/services/theme.service';
 import { VocabularyAddedEvent } from '../../../events/vocabulary-added.event';
 import { VocabularyImportedEvent } from '../../../events/vocabulary-imported.event';
 import { VocabularyUpdatedEvent } from '../../../events/vocabulary-updated.event';
 import { IVocable } from '../../../models/vocable.model';
 import { VocabularyService } from '../../../services/vocabulary.service';
-import { ThemeService } from 'src/app/services/theme.service';
-import { addIcons } from "ionicons";
-import { add, alertCircleOutline, arrowForwardCircleOutline, arrowUpCircleOutline, checkmarkCircleOutline, checkmarkDoneCircleOutline, chevronForwardCircleOutline, closeCircleOutline, trash } from "ionicons/icons";
-import { PracticeLevel } from 'src/app/models/practice-level.model';
+import { AddVocabularyComponent } from '../add-vocabulary/add-vocabulary.component';
 
 @Component({
   selector: 'vocabulary-list-page',
-  templateUrl: 'list.page.html',
-  styleUrls: ['list.page.scss']
+  templateUrl: './vocabulary-list.page.html',
+  styleUrl: './vocabulary-list.page.scss'
 })
 export class VocabularyListPage implements OnInit {
 
@@ -45,7 +45,7 @@ export class VocabularyListPage implements OnInit {
       this.vocabulary = []
       await this.loadVocabulary();
     });
-    addIcons({ add, trash, alertCircleOutline, arrowForwardCircleOutline, arrowUpCircleOutline, checkmarkCircleOutline, checkmarkDoneCircleOutline });
+    addIcons({ add, trash, schoolOutline, trendingUpOutline, checkmarkOutline, trophyOutline, rocketOutline });
   }
 
   async ngOnInit() {
@@ -91,30 +91,30 @@ export class VocabularyListPage implements OnInit {
   toIcon(vocable: IVocable) {
     switch (vocable.practiceLevel) {
       case PracticeLevel.NeverKnownOrPracticed:
-        return vocable.practicedCount > 0 ? "alert-circle-outline" : "";
+        return "rocket-outline";
       case PracticeLevel.AtLeastOnceKnown:
-        return "arrow-forward-circle-outline";
+        return "school-outline";
       case PracticeLevel.OnTheRightTrack:
-        return "arrow-up-circle-outline";
+        return "trending-up-outline";
       case PracticeLevel.Good:
-        return "checkmark-circle-outline";
+        return "checkmark-outline";
       case PracticeLevel.VeryGood:
-        return "checkmark-done-circle-outline";
+        return "trophy-outline";
     }
   }
 
   toColor(vocable: IVocable) {
     switch (vocable.practiceLevel) {
       case PracticeLevel.NeverKnownOrPracticed:
-        return "#de5d6e";
+        return 'var(--ion-color-medium)';
       case PracticeLevel.AtLeastOnceKnown:
-        return "#ffb509";
+        return "var(--ion-color-warning)";
       case PracticeLevel.OnTheRightTrack:
-        return "#636eeb";
+        return "var(--ion-color-tertiary)";
       case PracticeLevel.Good:
-        return "#2dd36f";
+        return "var(--ion-color-success)";
       case PracticeLevel.VeryGood:
-        return "#2dd36f";
+        return "var(--ion-color-success)";
     }
   }
 
