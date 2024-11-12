@@ -20,31 +20,39 @@
   </ion-header>
 
   <div class="content">
-
-    <div *ngIf="!finished">
+    @if(!finished){
+    <div>
       <ion-grid class="ion-padding" style="max-width: 440px;">
         <ion-row>
-          <ion-col *ngFor="let result of results;">
-            <div *ngIf="result===true" class="progressDot" style="background: #2dd36f;"></div>
-            <div *ngIf="result===false" class="progressDot" style="background: #eb445a;"></div>
-            <div *ngIf="result===undefined" class="progressDot" style="background: #92949c;"></div>
+          @for (result of results; track $index) {
+          <ion-col>
+            @switch (result)
+            {
+            @case (true) { <div class="progressDot" style="background: #2dd36f;"></div> }
+            @case (false) { <div class="progressDot" style="background: #eb445a;"></div> }
+            @default { <div class="progressDot" style="background: #92949c;"></div> }
+            }
           </ion-col>
+          }
         </ion-row>
       </ion-grid>
 
-      <div id="flashcard" #flashcard (window:resize)="0" [ngStyle]="{'height.px': flashcard.offsetWidth}">
+      <div id="flashcard" #flashcard (window:resize)="0" [style]="{'height': flashcard.offsetWidth + 'px'}">
         <ion-card #flashcard style="height: 100%; margin-inline: 0px;">
           <ion-card-content style="height: 100%;">
             <ion-grid style="height: 100%;">
-              <ion-row style="height: 80%;" class="ion-align-items-center">
+              <ion-row style="height: 70%;" class="ion-align-items-center">
                 <ion-col class="ion-text-center">
-                  <ion-label *ngIf="!rotated">{{flashcardFrontText}}</ion-label>
-                  <ion-label *ngIf="rotated">{{flashcardBackText}}</ion-label>
+                  <ion-label>{{ !rotated ? flashcardFrontText : flashcardBackText }}</ion-label>
                 </ion-col>
               </ion-row>
               <ion-row class="ion-align-items-center">
                 <ion-col class="ion-text-center">
-                  <ion-icon size="large" name="volume-medium-outline" (click)="speak()"></ion-icon>
+                  <ion-button fill="clear" (click)="speak()" enableLongPress (longPress)="toggleAutoSpeak()"
+                    [color]="autoSpeak ? 'primary' : 'dark'">
+                    <ion-icon size="large" name="volume-medium-outline">
+                    </ion-icon>
+                  </ion-button>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -53,23 +61,34 @@
       </div>
       <br>
       <ion-grid class="ion-padding" style="max-width: 600px;">
-        <ion-row *ngIf="!rotated">
+        @if(!rotated){
+        <ion-row>
           <ion-col class="ion-text-center">
-            <ion-icon size="large" name="sync-outline" (click)="rotateCard()"></ion-icon>
+            <ion-button fill="clear" color="dark" (click)="rotateCard()">
+              <ion-icon size="large" name="sync-outline"></ion-icon>
+            </ion-button>
           </ion-col>
         </ion-row>
-        <ion-row *ngIf="rotated">
+        }
+        @else {
+        <ion-row>
           <ion-col class="ion-text-center">
-            <ion-icon size="large" name="thumbs-down-outline" (click)="markAsWrong()"></ion-icon>
+            <ion-button fill="clear" color="dark" (click)="markAsWrong()">
+              <ion-icon size="large" name="thumbs-down-outline"></ion-icon>
+            </ion-button>
           </ion-col>
           <ion-col class="ion-text-center">
-            <ion-icon size="large" name="thumbs-up-outline" (click)="markAsCorrect()"></ion-icon>
+            <ion-button fill="clear" color="dark" (click)="markAsCorrect()">
+              <ion-icon size="large" name="thumbs-up-outline"></ion-icon>
+            </ion-button>
           </ion-col>
         </ion-row>
+        }
       </ion-grid>
     </div>
-
-    <div *ngIf="finished">
+    }
+    @else {
+    <div>
       <h1 style="text-align: center; margin-top: 128px;">Finished!</h1>
 
       <p style="width: 100%; text-align: center; margin-top: 128px;">{{correctPercentage | number:'1.0-0'}}% correct</p>
@@ -83,6 +102,7 @@
         <ion-label slot="end">Continue</ion-label>
       </ion-button>
     </div>
+    }
 
   </div>
 

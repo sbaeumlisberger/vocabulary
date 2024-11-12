@@ -2,11 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Vocable } from 'src/app/models/vocable.model';
 import { PracticeService } from 'src/app/services/practice.service';
-import { Location } from '@angular/common';
+import { DecimalPipe, Location } from '@angular/common';
 import { ThemeService } from 'src/app/services/theme.service';
 import { addIcons } from "ionicons";
 import { syncOutline, thumbsDownOutline, thumbsUpOutline, arrowBackOutline, reload, volumeMediumOutline } from "ionicons/icons";
 import { ViewWillEnter, ViewWillLeave } from '@ionic/angular';
+import { LongPressDirective } from 'src/app/directives/long-press.directive';
+import { IonHeader, IonCard, IonCardContent, IonGrid, IonLabel, IonCol, IonRow, IonBackButton, IonButtons, IonContent, IonToolbar, IonTitle, IonIcon, IonButton } from "@ionic/angular/standalone";
 
 enum PracticeMode {
   RANDOM = 'random',
@@ -18,6 +20,8 @@ enum PracticeMode {
   selector: 'app-practice',
   templateUrl: './practice.component.html',
   styleUrls: ['./practice.component.scss'],
+  standalone: true,
+  imports: [IonButton, IonIcon, IonTitle, IonToolbar, IonContent, IonButtons, IonBackButton, IonRow, IonCol, IonLabel, IonGrid, IonCardContent, IonCard, IonHeader, LongPressDirective, DecimalPipe]
 })
 export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
 
@@ -33,6 +37,8 @@ export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
 
   correctPercentage: number = 0;
 
+  autoSpeak = false;
+
   private vocables: Vocable[] = [];
 
   private currentVocable?: Vocable;
@@ -41,8 +47,11 @@ export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
 
   private mode: PracticeMode;
 
-  private flashcardFrontLanguage = "de-DE";
-  private flashcardBackLanguage = "en-UK"
+  private readonly foreignLanguage = "en-UK";
+  private readonly nativeLanguage = "de-DE";
+
+  private flashcardFrontLanguage = this.nativeLanguage;
+  private flashcardBackLanguage = this.foreignLanguage
 
   private knownAbbreviations = [
     { abbreviation: 'sth.', word: 'something', },
@@ -72,6 +81,10 @@ export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
 
   rotateCard() {
     this.rotated = true;
+
+    if (this.autoSpeak && this.flashcardBackLanguage == this.foreignLanguage) {
+      this.speak();
+    }
   }
 
   speak() {
@@ -82,6 +95,10 @@ export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
     utterance.lang = language;
     speechSynthesis.cancel();
     speechSynthesis.speak(utterance);
+  }
+
+  toggleAutoSpeak() {
+    this.autoSpeak = !this.autoSpeak;
   }
 
   async markAsCorrect() {
@@ -127,6 +144,9 @@ export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
       this.currentVocable = this.vocables[this.index]
       this.updateFlashcard();
       this.rotated = false;
+      if (this.autoSpeak && this.flashcardFrontLanguage == this.foreignLanguage) {
+        this.speak();
+      }
     }
   }
 
@@ -139,14 +159,14 @@ export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
       case PracticeMode.FOREIGN_TO_NATIVE:
         this.flashcardFrontText = this.currentVocable.foreignMeaning;
         this.flashcardBackText = this.currentVocable.nativeMeanings.join(', ');
-        this.flashcardFrontLanguage = "en-UK";
-        this.flashcardBackLanguage = "de-DE";
+        this.flashcardFrontLanguage = this.foreignLanguage;
+        this.flashcardBackLanguage = this.nativeLanguage;
         break;
       case PracticeMode.NATIVE_TO_FOREIGN:
         this.flashcardFrontText = this.currentVocable.nativeMeanings.join(', ');
         this.flashcardBackText = this.currentVocable.foreignMeaning;
-        this.flashcardFrontLanguage = "de-DE";
-        this.flashcardBackLanguage = "en-UK";
+        this.flashcardFrontLanguage = this.nativeLanguage;
+        this.flashcardBackLanguage = this.foreignLanguage;
         break;
     }
   }

@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { PraticeOverviewPage } from './overview/pratice-overview.page';
 
 import { Tab2PageRoutingModule } from './practice-routing.module';
-import { PracticeComponent } from './flashcards/practice.component';
 import { IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardContent, IonLabel, IonIcon, IonButton, IonCardHeader, IonCardTitle } from "@ionic/angular/standalone";
 
 @NgModule({
@@ -36,6 +35,6 @@ import { IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonContent,
         IonCardTitle,
         IonCardContent
     ],
-    declarations: [PraticeOverviewPage, PracticeComponent]
+    declarations: [PraticeOverviewPage]
 })
 export class PracticeModule { }
