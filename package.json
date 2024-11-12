@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "secure-server": "npx angular-http-server -p 8443 --path=www/browser --https --key ./ssl/key.pem --cert ./ssl/cert.pem"
   },
   "private": true,
   "dependencies": {
