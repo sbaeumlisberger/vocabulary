@@ -3,6 +3,7 @@ import { AlertController, ViewWillEnter } from '@ionic/angular/standalone';
 import { Theme } from 'src/app/models/theme.model';
 import { Vocable } from 'src/app/models/vocable.model';
 import { ReminderService } from 'src/app/services/reminder.service';
+import { SettingsService } from 'src/app/services/settings.service';
 import { ThemeService } from 'src/app/services/theme.service';
 import { UpdateService } from 'src/app/services/update.service';
 import { VocabularyService } from 'src/app/services/vocabulary.service';
@@ -15,6 +16,8 @@ import { VocabularyService } from 'src/app/services/vocabulary.service';
 export class SettingsComponent implements OnInit, ViewWillEnter {
 
     reminderEnabled: boolean = false;
+
+    showPracticeLevelInVocabularyList: boolean = false;
 
     reminderTime: string;
 
@@ -35,9 +38,17 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
         this.themeService.overwriteStatusBarColor('#f2f2f7');
     }
 
-    constructor(private vocabularyService: VocabularyService, private themeService: ThemeService, private alertController: AlertController, private reminderService: ReminderService, private updateService: UpdateService) { }
+    constructor(
+        private readonly vocabularyService: VocabularyService,
+        private readonly themeService: ThemeService,
+        private readonly alertController: AlertController,
+        private readonly reminderService: ReminderService,
+        private readonly updateService: UpdateService,
+        private readonly settingsService: SettingsService) {
+    }
 
     ngOnInit(): void {
+        this.showPracticeLevelInVocabularyList = this.settingsService.getShowPracticeLevelInVocabularyList();
         this.reminderEnabled = this.reminderService.isReminderEnabled();
         let reminderTime = this.reminderService.getReminderTime();
         this.reminderTime = reminderTime.hours.toString().padStart(2, '0') + ':' + reminderTime.minutes.toString().padStart(2, '0');
@@ -87,6 +98,10 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
 
         // start the download
         a.click();
+    }
+
+    onShowPracticeLevelInVocabularyListChanged() {
+        this.settingsService.setShowPracticeLevelInVocabularyList(this.showPracticeLevelInVocabularyList)
     }
 
     async onReminderEnabledChanged() {

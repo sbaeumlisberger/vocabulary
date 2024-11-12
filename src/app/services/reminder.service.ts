@@ -12,7 +12,7 @@ export class ReminderService {
 
   private static readonly REMINDER_TIME_KEY = "reminderTime";
 
-  private reminderTimer?;
+  private reminderTimeoutId?: number;
 
   constructor(@Inject(LOCAL_STORAGE) private storageService: StorageService) { }
 
@@ -38,8 +38,8 @@ export class ReminderService {
   }
 
   disableReminder() {
-    if (this.reminderTimer) {
-      clearTimeout(this.reminderTimer);
+    if (this.reminderTimeoutId) {
+      clearTimeout(this.reminderTimeoutId);
     }
     this.storageService.set(ReminderService.REMINDER_ENABLED_KEY, false);
   }
@@ -47,8 +47,8 @@ export class ReminderService {
   async scheduleReminder(time: Time) {
     this.storageService.set(ReminderService.REMINDER_TIME_KEY, time);
 
-    if (this.reminderTimer) {
-      clearTimeout(this.reminderTimer);
+    if (this.reminderTimeoutId) {
+      clearTimeout(this.reminderTimeoutId);
     }
 
     let reminderDate = new Date();
@@ -64,12 +64,12 @@ export class ReminderService {
 
     console.log("Scheduled reminder in " + timeoutMilliseconds + " ms");
 
-    this.reminderTimer = setTimeout(async () => {
+    this.reminderTimeoutId = window.setTimeout(async () => {
       let serviceWorker = await navigator.serviceWorker.getRegistration();
       serviceWorker.showNotification("Time to pratice some vocabulary!", {
         data: {
           onActionClick: {
-            default: { "operation": "navigateLastFocusedOrOpen", "url": "tabs/practice" }
+            default: { "operation": "navigateLastFocusedOrOpen", "url": "practice" }
           }
         }
       });

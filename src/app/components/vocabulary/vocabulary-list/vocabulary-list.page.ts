@@ -11,6 +11,7 @@ import { VocabularyUpdatedEvent } from '../../../events/vocabulary-updated.event
 import { IVocable } from '../../../models/vocable.model';
 import { VocabularyService } from '../../../services/vocabulary.service';
 import { AddVocabularyComponent } from '../add-vocabulary/add-vocabulary.component';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'vocabulary-list-page',
@@ -25,11 +26,19 @@ export class VocabularyListPage implements OnInit {
 
   vocabulary: IVocable[] = [];
 
+  showPracticeLevel: boolean = false;
+
   canLoadMore: boolean = false;
 
   private offset: number = 0;
 
-  constructor(private vocabularyService: VocabularyService, private eventBus: NgEventBus, private modalController: ModalController, private themeService: ThemeService) {
+  constructor(
+    private readonly vocabularyService: VocabularyService,
+    private readonly eventBus: NgEventBus,
+    private readonly modalController: ModalController,
+    private readonly themeService: ThemeService,
+    private readonly settingsService: SettingsService) {
+
     this.eventBus.on(VocabularyAddedEvent.ID).subscribe(async () => {
       this.offset = 0;
       this.vocabulary = []
@@ -45,6 +54,7 @@ export class VocabularyListPage implements OnInit {
       this.vocabulary = []
       await this.loadVocabulary();
     });
+
     addIcons({ add, trash, schoolOutline, trendingUpOutline, checkmarkOutline, trophyOutline, rocketOutline });
   }
 
@@ -54,6 +64,7 @@ export class VocabularyListPage implements OnInit {
 
   ionViewWillEnter() {
     this.themeService.overwriteStatusBarColor('#ffffff');
+    this.showPracticeLevel = this.settingsService.getShowPracticeLevelInVocabularyList();
   }
 
   async search(event) {

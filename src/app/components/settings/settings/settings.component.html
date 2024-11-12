@@ -36,8 +36,18 @@
 
     <ion-list inset="true" lines="none">
       <ion-item>
-        <ion-toggle [(ngModel)]="reminderEnabled" (ngModelChange)="onReminderEnabledChanged()">Daily
-          reminder</ion-toggle>
+        <ion-toggle [(ngModel)]="showPracticeLevelInVocabularyList"
+          (ngModelChange)="onShowPracticeLevelInVocabularyListChanged()">
+          Show practice level in list
+        </ion-toggle>
+      </ion-item>
+    </ion-list>
+
+    <ion-list inset="true" lines="none">
+      <ion-item>
+        <ion-toggle [(ngModel)]="reminderEnabled" (ngModelChange)="onReminderEnabledChanged()">
+          Daily reminder
+        </ion-toggle>
       </ion-item>
       <ion-item *ngIf="reminderEnabled" button="true" detail="false" (click)="toggleReminderTimePicker()">
         <ion-label>Time</ion-label>
