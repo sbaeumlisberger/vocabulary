@@ -4,7 +4,7 @@ import { fromEvent, merge, of, Subscription, timer } from "rxjs";
 import { filter, map, switchMap } from "rxjs/operators";
 
 @Directive({
-  selector: "[enableLongPress]",
+  selector: "[appEnableLongPress]",
   standalone: true
 })
 export class LongPressDirective implements OnDestroy {

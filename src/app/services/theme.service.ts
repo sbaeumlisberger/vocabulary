@@ -54,7 +54,7 @@ export class ThemeService {
     }
 
     private applyTheme(theme: Theme) {
-        let finalTheme = this.toFinalTheme(theme);
+        const finalTheme = this.toFinalTheme(theme);
 
         if (finalTheme == Theme.Dark) {
             this.renderer.addClass(document.documentElement, 'ion-palette-dark');

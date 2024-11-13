@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { takeUntilDestroyed, } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { Vocable } from 'src/app/models/vocable.model';
@@ -24,7 +24,7 @@ enum PracticeMode {
   standalone: true,
   imports: [IonButton, IonIcon, IonTitle, IonToolbar, IonContent, IonButtons, IonBackButton, IonRow, IonCol, IonLabel, IonGrid, IonCardContent, IonCard, IonHeader, LongPressDirective, DecimalPipe]
 })
-export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
+export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
 
   flashcardFrontText: string = "";
 
@@ -63,11 +63,9 @@ export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
 
   constructor(private route: ActivatedRoute, private practiceService: PracticeService, private location: Location, private themeService: ThemeService) {
     addIcons({ syncOutline, thumbsDownOutline, thumbsUpOutline, arrowBackOutline, reload, volumeMediumOutline });
-  }
 
-  ngOnInit() {
     this.route.params.pipe(takeUntilDestroyed()).subscribe(async params => {
-      this.mode = params['mode'];
+      this.mode = params.mode;
       await this.loadVocabularyToPractice();
     });
   }
@@ -92,7 +90,7 @@ export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
     let text = this.rotated ? this.flashcardBackText : this.flashcardFrontText;
     this.knownAbbreviations.forEach(entry => text = text.replaceAll(entry.abbreviation, entry.word))
     const language = this.rotated ? this.flashcardBackLanguage : this.flashcardFrontLanguage;
-    let utterance = new SpeechSynthesisUtterance(text);
+    const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = language;
     speechSynthesis.cancel();
     speechSynthesis.speak(utterance);

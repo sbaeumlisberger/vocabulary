@@ -5,7 +5,6 @@ import { VocabularyImportedEvent } from '../events/vocabulary-imported.event';
 import { VocabularyUpdatedEvent } from '../events/vocabulary-updated.event';
 import { PracticeLevel } from '../models/practice-level.model';
 import { IVocable } from '../models/vocable.model';
-import { Vocable } from '../models/vocable.model'
 import { VocabularyDB } from '../persistence/vocabulary-db';
 
 @Injectable({

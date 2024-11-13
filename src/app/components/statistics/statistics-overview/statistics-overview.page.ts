@@ -8,7 +8,7 @@ import { PracticeLevel } from '../../../models/practice-level.model';
 import { StatisticsService } from '../../../services/statistics.service';
 
 @Component({
-    selector: 'statistics-overview-page',
+    selector: 'app-statistics-overview-page',
     templateUrl: 'statistics-overview.page.html',
     styleUrls: ['statistics-overview.page.scss'],
 })

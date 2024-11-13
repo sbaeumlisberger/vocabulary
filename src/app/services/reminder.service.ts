@@ -1,6 +1,5 @@
 import { Time } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 
 @Injectable({
@@ -18,7 +17,7 @@ export class ReminderService {
 
   initialize() {
     if (this.isReminderEnabled()) {
-      let time = this.getReminderTime();
+      const time = this.getReminderTime();
       this.scheduleReminder(time);
     }
   }
@@ -51,7 +50,7 @@ export class ReminderService {
       clearTimeout(this.reminderTimeoutId);
     }
 
-    let reminderDate = new Date();
+    const reminderDate = new Date();
     reminderDate.setHours(time.hours);
     reminderDate.setMinutes(time.minutes);
     reminderDate.setSeconds(0);
@@ -65,7 +64,7 @@ export class ReminderService {
     console.log("Scheduled reminder in " + timeoutMilliseconds + " ms");
 
     this.reminderTimeoutId = window.setTimeout(async () => {
-      let serviceWorker = await navigator.serviceWorker.getRegistration();
+      const serviceWorker = await navigator.serviceWorker.getRegistration();
       serviceWorker.showNotification("Time to pratice some vocabulary!", {
         data: {
           onActionClick: {

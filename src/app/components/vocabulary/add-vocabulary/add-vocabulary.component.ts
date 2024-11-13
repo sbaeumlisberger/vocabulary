@@ -49,8 +49,8 @@ export class AddVocabularyComponent implements OnInit {
     }
 
     save(): void {
-        let foreignMeaning = this.foreignMeaning.trim();
-        let nativeMeanings = this.nativeMeanings.map(nm => nm.value.trim()).filter(value => value !== "");
+        const foreignMeaning = this.foreignMeaning.trim();
+        const nativeMeanings = this.nativeMeanings.map(nm => nm.value.trim()).filter(value => value !== "");
         if (foreignMeaning !== "" && nativeMeanings.length >= 1) {
             if (this.vocable) {
                 this.vocable.foreignMeaning = foreignMeaning;

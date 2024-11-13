@@ -50,7 +50,7 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
     ngOnInit(): void {
         this.showPracticeLevelInVocabularyList = this.settingsService.getShowPracticeLevelInVocabularyList();
         this.reminderEnabled = this.reminderService.isReminderEnabled();
-        let reminderTime = this.reminderService.getReminderTime();
+        const reminderTime = this.reminderService.getReminderTime();
         this.reminderTime = reminderTime.hours.toString().padStart(2, '0') + ':' + reminderTime.minutes.toString().padStart(2, '0');
     }
 
@@ -59,13 +59,13 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
     }
 
     async import(event: Event) {
-        let files = (<HTMLInputElement>event.target).files;
+        const files = (event.target as HTMLInputElement).files;
         if (files.length == 1) {
             try {
-                let vocabulary: Vocable[] = JSON.parse(await files.item(0)!.text());
+                const vocabulary: Vocable[] = JSON.parse(await files.item(0)!.text());
                 this.vocabularyService.deleteAll();
                 this.vocabularyService.import(vocabulary);
-                let alert = await this.alertController.create({
+                const alert = await this.alertController.create({
                     header: 'Import completed',
                     message: 'Vocabulary was successfully imported.',
                     buttons: ['OK'],
@@ -73,7 +73,7 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
                 alert.present();
             }
             catch (err) {
-                let alert = await this.alertController.create({
+                const alert = await this.alertController.create({
                     header: 'Import failed',
                     message: 'Could not import vocabulary. ' + err,
                     buttons: ['OK'],
@@ -85,14 +85,14 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
 
     async export() {
         // get all vocabulary
-        let vocabulary = await this.vocabularyService.getAll();
+        const vocabulary = await this.vocabularyService.getAll();
 
         // creatre json file
-        let blob = new Blob([JSON.stringify(vocabulary)], { type: "application/json" });
+        const blob = new Blob([JSON.stringify(vocabulary)], { type: "application/json" });
 
         // create download link
-        let a = document.createElement("a");
-        let url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        const url = URL.createObjectURL(blob);
         a.href = url;
         a.download = "vocabulary.json";
 
@@ -108,13 +108,13 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
         if (this.reminderEnabled) {
             if (window.Notification) {
                 await Notification.requestPermission();
-                let reminderTimeParts = this.reminderTime.split(":");
-                let hours = Number.parseInt(reminderTimeParts[0]);
-                let minutes = Number.parseInt(reminderTimeParts[1]);
+                const reminderTimeParts = this.reminderTime.split(":");
+                const hours = Number.parseInt(reminderTimeParts[0]);
+                const minutes = Number.parseInt(reminderTimeParts[1]);
                 this.reminderService.enableReminder({ hours, minutes });
             }
             else {
-                let alert = await this.alertController.create({
+                const alert = await this.alertController.create({
                     header: 'Not supported',
                     message: 'Unfortunately, this function is not supported by your device.',
                     buttons: ['OK'],
@@ -129,9 +129,9 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
     }
 
     onReminderTimeChanged() {
-        let reminderTimeParts = this.reminderTime.split(":");
-        let hours = Number.parseInt(reminderTimeParts[0]);
-        let minutes = Number.parseInt(reminderTimeParts[1]);
+        const reminderTimeParts = this.reminderTime.split(":");
+        const hours = Number.parseInt(reminderTimeParts[0]);
+        const minutes = Number.parseInt(reminderTimeParts[1]);
         this.reminderService.scheduleReminder({ hours, minutes });
     }
 
@@ -141,10 +141,10 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
 
     async checkForUpdate() {
         this.checkingForUpdate = true;
-        let updateFound = await this.updateService.checkForUpdate();
+        const updateFound = await this.updateService.checkForUpdate();
         this.checkingForUpdate = false;
         if (!updateFound) {
-            let alert = await this.alertController.create({
+            const alert = await this.alertController.create({
                 header: 'No update found',
                 buttons: ['OK'],
             });

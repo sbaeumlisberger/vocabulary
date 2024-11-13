@@ -12,8 +12,8 @@ export class PracticeService {
   constructor(private db: VocabularyDB) { }
 
   async getVocabularyToPractice(): Promise<IVocable[]> {
-    let _24hAgo = new Date().getTime() - 24 * 60 * 60 * 1000;
-    let vocabulary = await this.db.vocabulary.orderBy("score").filter(v => v.lastPracticed < _24hAgo).limit(10).toArray();
+    const _24hAgo = new Date().getTime() - 24 * 60 * 60 * 1000;
+    const vocabulary = await this.db.vocabulary.orderBy("score").filter(v => v.lastPracticed < _24hAgo).limit(10).toArray();
     ArrayUtil.randomizeOrder(vocabulary);
     return vocabulary;
   }
@@ -55,7 +55,7 @@ export class PracticeService {
   }
 
   private calcPracticeLevel(vocable: IVocable): PracticeLevel {
-    let correntRate = vocable.correctCount / vocable.practicedCount;
+    const correntRate = vocable.correctCount / vocable.practicedCount;
     if (vocable.practicedCount >= 10 && correntRate > 0.9) {
       return PracticeLevel.VeryGood;
     }

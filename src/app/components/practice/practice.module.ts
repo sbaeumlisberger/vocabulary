@@ -1,17 +1,15 @@
-import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { PraticeOverviewPage } from './overview/pratice-overview.page';
-
-import { Tab2PageRoutingModule } from './practice-routing.module';
+import { PracticeOverviewPage } from './overview/pratice-overview.page';
+import { PracticeTabPageRoutingModule } from './practice-routing.module';
 import { IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonContent, IonGrid, IonRow, IonCol, IonCard, IonCardContent, IonLabel, IonIcon, IonButton, IonCardHeader, IonCardTitle } from "@ionic/angular/standalone";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        Tab2PageRoutingModule,
+        PracticeTabPageRoutingModule,
         IonHeader,
         IonToolbar,
         IonTitle,
@@ -35,6 +33,6 @@ import { IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonContent,
         IonCardTitle,
         IonCardContent
     ],
-    declarations: [PraticeOverviewPage]
+    declarations: [PracticeOverviewPage]
 })
 export class PracticeModule { }

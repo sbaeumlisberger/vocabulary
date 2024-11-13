@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { NavigationEnd, Router } from "@angular/router";
 import { SwUpdate } from "@angular/service-worker";
 import { interval } from "rxjs";
 
@@ -8,7 +7,7 @@ import { interval } from "rxjs";
 })
 export class UpdateService {
 
-  constructor(private swUpdate: SwUpdate, private router: Router) { }
+  constructor(private swUpdate: SwUpdate) { }
 
   startCheckForUpdates() {
     // check if service worker is active

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { IonBackButton, IonButtons, IonContent, IonHeader, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonLabel, IonList, IonRow, IonToolbar, ViewWillEnter } from '@ionic/angular/standalone';
@@ -14,7 +14,7 @@ import { VocabularyService } from 'src/app/services/vocabulary.service';
   standalone: true,
   imports: [IonButtons, IonBackButton, IonHeader, IonToolbar, IonContent, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonList, IonLabel, IonRow]
 })
-export class LevelListComponent implements OnInit, ViewWillEnter {
+export class LevelListComponent implements ViewWillEnter {
 
   private static readonly BATCH_SIZE: number = 20;
 
@@ -26,11 +26,9 @@ export class LevelListComponent implements OnInit, ViewWillEnter {
 
   private offset: number = 0;
 
-  constructor(private readonly vocabularyService: VocabularyService, private readonly route: ActivatedRoute, private readonly themeService: ThemeService) { }
-
-  async ngOnInit() {
+  constructor(private readonly vocabularyService: VocabularyService, private readonly route: ActivatedRoute, private readonly themeService: ThemeService) {
     this.route.params.pipe(takeUntilDestroyed()).subscribe(async params => {
-      this.praticeLevel = Number.parseInt(params.get('praticeLevel')) as PracticeLevel;
+      this.praticeLevel = Number.parseInt(params.praticeLevel) as PracticeLevel;
       this.offset = 0;
       this.vocabulary = [];
       await this.loadBatch();
@@ -47,7 +45,7 @@ export class LevelListComponent implements OnInit, ViewWillEnter {
   }
 
   private async loadBatch() {
-    var result = await this.vocabularyService.loadForPracticeLevel(this.praticeLevel, this.offset, LevelListComponent.BATCH_SIZE);
+    const result = await this.vocabularyService.loadForPracticeLevel(this.praticeLevel, this.offset, LevelListComponent.BATCH_SIZE);
     this.offset += LevelListComponent.BATCH_SIZE;
     this.vocabulary = this.vocabulary.concat(result);
     this.canLoadMore = result.length != 0;

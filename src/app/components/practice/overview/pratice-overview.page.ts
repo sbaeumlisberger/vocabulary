@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { ThemeService } from 'src/app/services/theme.service';
-import { IonRouterLink } from "@ionic/angular/standalone";
 
 @Component({
-    selector: 'pratice-overview',
+    selector: 'app-pratice-overview',
     templateUrl: 'pratice-overview.page.html',
     styleUrls: ['pratice-overview.page.scss']
 })
-export class PraticeOverviewPage {
+export class PracticeOverviewPage {
 
     constructor(private themeService: ThemeService) {
     }

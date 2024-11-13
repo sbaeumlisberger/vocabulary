@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular/standalone';
 import { addIcons } from "ionicons";
-import { add, checkmarkOutline, hourglassOutline, rocketOutline, schoolOutline, trash, trendingUpOutline, trophyOutline } from "ionicons/icons";
+import { add, checkmarkOutline, rocketOutline, schoolOutline, trash, trendingUpOutline, trophyOutline } from "ionicons/icons";
 import { NgEventBus } from 'ng-event-bus';
 import { PracticeLevel } from 'src/app/models/practice-level.model';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -14,7 +14,7 @@ import { AddVocabularyComponent } from '../add-vocabulary/add-vocabulary.compone
 import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
-  selector: 'vocabulary-list-page',
+  selector: 'app-vocabulary-list-page',
   templateUrl: './vocabulary-list.page.html',
   styleUrl: './vocabulary-list.page.scss'
 })
@@ -135,7 +135,7 @@ export class VocabularyListPage implements OnInit {
       presentingElement: document.querySelector('ion-router-outlet'),
       componentProps: componentProps
     });
-    modal.onWillDismiss().then(data => {
+    modal.onWillDismiss().then(() => {
       this.themeService.overwriteStatusBarColor('#ffffff');
     });
     this.themeService.overwriteStatusBarColor('#000000');
@@ -143,7 +143,7 @@ export class VocabularyListPage implements OnInit {
   }
 
   private async loadVocabulary() {
-    var result = await this.vocabularyService.load(this.offset, VocabularyListPage.BATCH_SIZE);
+    const result = await this.vocabularyService.load(this.offset, VocabularyListPage.BATCH_SIZE);
     this.offset += VocabularyListPage.BATCH_SIZE;
     this.vocabulary = this.vocabulary.concat(result);
     this.canLoadMore = result.length != 0;
