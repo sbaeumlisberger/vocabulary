@@ -1,4 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { takeUntilDestroyed, } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { Vocable } from 'src/app/models/vocable.model';
 import { PracticeService } from 'src/app/services/practice.service';
@@ -65,9 +66,9 @@ export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(async params => {
+    this.route.params.pipe(takeUntilDestroyed()).subscribe(async params => {
       this.mode = params['mode'];
-      await this.load();
+      await this.loadVocabularyToPractice();
     });
   }
 
@@ -118,15 +119,15 @@ export class PracticeComponent implements OnInit, ViewWillEnter, ViewWillLeave {
   }
 
   async continuePractice() {
-    this.index = -1;
-    this.finished = false;
-    await this.load();
+    await this.loadVocabularyToPractice();
   }
 
-  private async load() {
+  private async loadVocabularyToPractice() {
     this.vocables = await this.practiceService.getVocabularyToPractice();
     if (this.vocables.length != 0) {
+      this.index = -1;
       this.results = new Array(this.vocables.length)
+      this.finished = false;
       this.showNext();
     }
     else {

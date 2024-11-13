@@ -22,7 +22,7 @@ export class VocabularyListPage implements OnInit {
 
   private static readonly BATCH_SIZE: number = 20;
 
-  searchQuery: string = "";
+  searchQuery: string = '';
 
   vocabulary: IVocable[] = [];
 
@@ -67,7 +67,7 @@ export class VocabularyListPage implements OnInit {
     this.showPracticeLevel = this.settingsService.getShowPracticeLevelInVocabularyList();
   }
 
-  async search(event) {
+  async search(event: { detail: { value?: string; }; }) {
     console.log(event.detail.value)
     this.searchQuery = event.detail.value;
     if (!this.searchQuery) {
@@ -81,7 +81,7 @@ export class VocabularyListPage implements OnInit {
     }
   }
 
-  async loadMore(event) {
+  async loadMore(event: { target: { complete: () => void; }; }) {
     await this.loadVocabulary();
     event.target.complete();
   }
@@ -102,15 +102,15 @@ export class VocabularyListPage implements OnInit {
   toIcon(vocable: IVocable) {
     switch (vocable.practiceLevel) {
       case PracticeLevel.NeverKnownOrPracticed:
-        return "rocket-outline";
+        return 'rocket-outline';
       case PracticeLevel.AtLeastOnceKnown:
-        return "school-outline";
+        return 'school-outline';
       case PracticeLevel.OnTheRightTrack:
-        return "trending-up-outline";
+        return 'trending-up-outline'
       case PracticeLevel.Good:
-        return "checkmark-outline";
+        return 'checkmark-outline';
       case PracticeLevel.VeryGood:
-        return "trophy-outline";
+        return 'trophy-outline';
     }
   }
 
