@@ -1,13 +1,12 @@
-import { Injectable } from "@angular/core";
-import { SwUpdate } from "@angular/service-worker";
-import { interval } from "rxjs";
+import { Injectable } from '@angular/core';
+import { SwUpdate } from '@angular/service-worker';
+import { interval } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UpdateService {
-
-  constructor(private swUpdate: SwUpdate) { }
+  constructor(private swUpdate: SwUpdate) {}
 
   startCheckForUpdates() {
     // check if service worker is active
@@ -23,11 +22,11 @@ export class UpdateService {
   }
 
   async checkForUpdate(): Promise<boolean> {
-    console.log("check for update");
+    console.log('check for update');
 
     // check if service worker is active and a update is available
-    if (this.swUpdate.isEnabled && await this.swUpdate.checkForUpdate()) {
-      console.log("activate update");
+    if (this.swUpdate.isEnabled && (await this.swUpdate.checkForUpdate())) {
+      console.log('activate update');
 
       // activate found update
       await this.swUpdate.activateUpdate();
@@ -38,8 +37,7 @@ export class UpdateService {
       return true;
     }
 
-    console.log("no update found");
+    console.log('no update found');
     return false;
   }
-
 }

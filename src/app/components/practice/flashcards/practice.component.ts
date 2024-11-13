@@ -1,20 +1,42 @@
 import { Component } from '@angular/core';
-import { takeUntilDestroyed, } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
 import { Vocable } from 'src/app/models/vocable.model';
 import { PracticeService } from 'src/app/services/practice.service';
 import { DecimalPipe, Location } from '@angular/common';
 import { ThemeService } from 'src/app/services/theme.service';
-import { addIcons } from "ionicons";
-import { syncOutline, thumbsDownOutline, thumbsUpOutline, arrowBackOutline, reload, volumeMediumOutline } from "ionicons/icons";
+import { addIcons } from 'ionicons';
+import {
+  syncOutline,
+  thumbsDownOutline,
+  thumbsUpOutline,
+  arrowBackOutline,
+  reload,
+  volumeMediumOutline,
+} from 'ionicons/icons';
 import { ViewWillEnter, ViewWillLeave } from '@ionic/angular';
 import { LongPressDirective } from 'src/app/directives/long-press.directive';
-import { IonHeader, IonCard, IonCardContent, IonGrid, IonLabel, IonCol, IonRow, IonBackButton, IonButtons, IonContent, IonToolbar, IonTitle, IonIcon, IonButton } from "@ionic/angular/standalone";
+import {
+  IonHeader,
+  IonCard,
+  IonCardContent,
+  IonGrid,
+  IonLabel,
+  IonCol,
+  IonRow,
+  IonBackButton,
+  IonButtons,
+  IonContent,
+  IonToolbar,
+  IonTitle,
+  IonIcon,
+  IonButton,
+} from '@ionic/angular/standalone';
 
 enum PracticeMode {
   RANDOM = 'random',
   FOREIGN_TO_NATIVE = 'foreign-to-native',
-  NATIVE_TO_FOREIGN = 'native-to-foreign'
+  NATIVE_TO_FOREIGN = 'native-to-foreign',
 }
 
 @Component({
@@ -22,13 +44,29 @@ enum PracticeMode {
   templateUrl: './practice.component.html',
   styleUrls: ['./practice.component.scss'],
   standalone: true,
-  imports: [IonButton, IonIcon, IonTitle, IonToolbar, IonContent, IonButtons, IonBackButton, IonRow, IonCol, IonLabel, IonGrid, IonCardContent, IonCard, IonHeader, LongPressDirective, DecimalPipe]
+  imports: [
+    IonButton,
+    IonIcon,
+    IonTitle,
+    IonToolbar,
+    IonContent,
+    IonButtons,
+    IonBackButton,
+    IonRow,
+    IonCol,
+    IonLabel,
+    IonGrid,
+    IonCardContent,
+    IonCard,
+    IonHeader,
+    LongPressDirective,
+    DecimalPipe,
+  ],
 })
 export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
+  flashcardFrontText: string = '';
 
-  flashcardFrontText: string = "";
-
-  flashcardBackText: string = "";
+  flashcardBackText: string = '';
 
   rotated: boolean = false;
 
@@ -48,23 +86,35 @@ export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
 
   private mode: PracticeMode;
 
-  private readonly foreignLanguage = "en-UK";
-  private readonly nativeLanguage = "de-DE";
+  private readonly foreignLanguage = 'en-UK';
+  private readonly nativeLanguage = 'de-DE';
 
   private flashcardFrontLanguage = this.nativeLanguage;
-  private flashcardBackLanguage = this.foreignLanguage
+  private flashcardBackLanguage = this.foreignLanguage;
 
   private knownAbbreviations = [
-    { abbreviation: 'sth.', word: 'something', },
-    { abbreviation: 'etw.', word: 'etwas', },
-    { abbreviation: 'sb.', word: 'somebody', },
-    { abbreviation: 'jdn.', word: 'jemanden' }
-  ]
+    { abbreviation: 'sth.', word: 'something' },
+    { abbreviation: 'etw.', word: 'etwas' },
+    { abbreviation: 'sb.', word: 'somebody' },
+    { abbreviation: 'jdn.', word: 'jemanden' },
+  ];
 
-  constructor(private route: ActivatedRoute, private practiceService: PracticeService, private location: Location, private themeService: ThemeService) {
-    addIcons({ syncOutline, thumbsDownOutline, thumbsUpOutline, arrowBackOutline, reload, volumeMediumOutline });
+  constructor(
+    private route: ActivatedRoute,
+    private practiceService: PracticeService,
+    private location: Location,
+    private themeService: ThemeService,
+  ) {
+    addIcons({
+      syncOutline,
+      thumbsDownOutline,
+      thumbsUpOutline,
+      arrowBackOutline,
+      reload,
+      volumeMediumOutline,
+    });
 
-    this.route.params.pipe(takeUntilDestroyed()).subscribe(async params => {
+    this.route.params.pipe(takeUntilDestroyed()).subscribe(async (params) => {
       this.mode = params.mode;
       await this.loadVocabularyToPractice();
     });
@@ -88,7 +138,7 @@ export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
 
   speak() {
     let text = this.rotated ? this.flashcardBackText : this.flashcardFrontText;
-    this.knownAbbreviations.forEach(entry => text = text.replaceAll(entry.abbreviation, entry.word))
+    this.knownAbbreviations.forEach((entry) => (text = text.replaceAll(entry.abbreviation, entry.word)));
     const language = this.rotated ? this.flashcardBackLanguage : this.flashcardFrontLanguage;
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = language;
@@ -124,11 +174,10 @@ export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
     this.vocables = await this.practiceService.getVocabularyToPractice();
     if (this.vocables.length != 0) {
       this.index = -1;
-      this.results = new Array(this.vocables.length)
+      this.results = new Array(this.vocables.length);
       this.finished = false;
       this.showNext();
-    }
-    else {
+    } else {
       this.finished = true;
     }
   }
@@ -136,11 +185,10 @@ export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
   private showNext() {
     if (this.index == this.vocables.length - 1) {
       this.finished = true;
-      this.correctPercentage = (this.results.filter(result => result === true).length / this.results.length) * 100;
-    }
-    else {
+      this.correctPercentage = (this.results.filter((result) => result === true).length / this.results.length) * 100;
+    } else {
       this.index++;
-      this.currentVocable = this.vocables[this.index]
+      this.currentVocable = this.vocables[this.index];
       this.updateFlashcard();
       this.rotated = false;
       if (this.autoSpeak && this.flashcardFrontLanguage == this.foreignLanguage) {
@@ -152,7 +200,7 @@ export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
   private updateFlashcard() {
     let mode = this.mode;
     if (mode == PracticeMode.RANDOM) {
-      mode = Math.random() >= 0.5 ? PracticeMode.FOREIGN_TO_NATIVE : PracticeMode.NATIVE_TO_FOREIGN
+      mode = Math.random() >= 0.5 ? PracticeMode.FOREIGN_TO_NATIVE : PracticeMode.NATIVE_TO_FOREIGN;
     }
     switch (mode) {
       case PracticeMode.FOREIGN_TO_NATIVE:

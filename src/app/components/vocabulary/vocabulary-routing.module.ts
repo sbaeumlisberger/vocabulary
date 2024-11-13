@@ -6,11 +6,11 @@ const routes: Routes = [
   {
     path: '',
     component: VocabularyListPage,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ListTabPageRoutingModule { }
+export class ListTabPageRoutingModule {}

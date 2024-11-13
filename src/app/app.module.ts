@@ -12,19 +12,18 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
 @NgModule({
-    declarations: [AppComponent],
-    imports: [
-        BrowserModule,
-        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production, registrationStrategy: 'registerImmediately' }),
-        AppRoutingModule,
-        IonApp,
-        IonRouterOutlet
-    ],
-    providers: [
-        NgEventBus,
-        { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-        provideIonicAngular()
-    ],
-    bootstrap: [AppComponent]
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      registrationStrategy: 'registerImmediately',
+    }),
+    AppRoutingModule,
+    IonApp,
+    IonRouterOutlet,
+  ],
+  providers: [NgEventBus, { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideIonicAngular()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

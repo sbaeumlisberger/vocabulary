@@ -11,11 +11,11 @@ const routes: Routes = [
   {
     path: 'level-list/:praticeLevel',
     component: LevelListComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class StatisticsRoutingModule { }
+export class StatisticsRoutingModule {}

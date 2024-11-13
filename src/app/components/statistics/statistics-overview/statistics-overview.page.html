@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Statistics
-    </ion-title>
+    <ion-title>Statistics</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,15 +12,16 @@
   </ion-header>
 
   <div class="content ion-padding-start ion-padding-end">
-    <br>
-    <p style="font-weight: bold;">Total words: {{vocabularyCount}}</p>
+    <br />
+    <p style="font-weight: bold">Total words: {{vocabularyCount}}</p>
 
     <button class="level-button" (click)="showList(praticeLevelEnum.NeverKnownOrPracticed)">
       <div class="level-header">
         <ion-icon icon="rocket-outline"></ion-icon>
-        <span>Never known or practiced: {{neverKnownOrPracticedPercent | number:'1.0-0'}}%
-          ({{neverKnownOrPracticedCount}}
-          words)</span>
+        <span>
+          Never known or practiced: {{neverKnownOrPracticedPercent | number:'1.0-0'}}% ({{neverKnownOrPracticedCount}}
+          words)
+        </span>
       </div>
       <ion-progress-bar [value]="neverKnownOrPracticedPercent/100"></ion-progress-bar>
     </button>
@@ -58,7 +57,5 @@
       </div>
       <ion-progress-bar [value]="veryGoodPercent/100"></ion-progress-bar>
     </button>
-
   </div>
-
 </ion-content>

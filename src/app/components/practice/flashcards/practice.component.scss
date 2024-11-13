@@ -1,25 +1,26 @@
-:host-context(.ios body.light) ion-content, :host-context(.ios body.light) ion-toolbar {
-    --background: #f2f2f7;
+:host-context(.ios body.light) ion-content,
+:host-context(.ios body.light) ion-toolbar {
+  --background: #f2f2f7;
 }
 
 .progressDot {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    margin: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin: auto;
 }
 
 #flashcard {
-    margin: auto;
-    margin-top: 32px;
-    width: calc(100% - 128px);
-    max-width: 400px;
+  margin: auto;
+  margin-top: 32px;
+  width: calc(100% - 128px);
+  max-width: 400px;
 }
 
 .stretchedButton {
-    display: block;
-    width: 80%;
-    max-width: 256px;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  width: 80%;
+  max-width: 256px;
+  margin-left: auto;
+  margin-right: auto;
 }

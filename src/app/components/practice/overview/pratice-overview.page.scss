@@ -1,13 +1,12 @@
-:host-context(.ios body.light) ion-content, :host-context(.ios body.light) ion-toolbar {
-    --background: #f2f2f7;
+:host-context(.ios body.light) ion-content,
+:host-context(.ios body.light) ion-toolbar {
+  --background: #f2f2f7;
 }
 
-.md ion-card 
-{
-    margin-top: 16px;
+.md ion-card {
+  margin-top: 16px;
 }
 
-.md ion-card:first-child
-{
-    margin-top: 32px;
+.md ion-card:first-child {
+  margin-top: 32px;
 }

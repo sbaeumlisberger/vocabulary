@@ -6,16 +6,16 @@ import { PracticeOverviewPage } from './overview/pratice-overview.page';
 const routes: Routes = [
   {
     path: '',
-    component: PracticeOverviewPage
+    component: PracticeOverviewPage,
   },
   {
     path: 'flashcards/:mode',
-    component: PracticeComponent
-  }
+    component: PracticeComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PracticeTabPageRoutingModule { }
+export class PracticeTabPageRoutingModule {}

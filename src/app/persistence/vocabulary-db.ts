@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
-import Dexie from 'dexie'
+import Dexie from 'dexie';
 import { IVocable } from '../models/vocable.model';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class VocabularyDB extends Dexie {
+  private static readonly DATABASE_NAME = 'VocabularyDB';
 
-    private static readonly DATABASE_NAME = "VocabularyDB";
+  public vocabulary: Dexie.Table<IVocable, number>;
 
-    public vocabulary: Dexie.Table<IVocable, number>;
+  public constructor() {
+    super(VocabularyDB.DATABASE_NAME);
 
-    public constructor() {
-        super(VocabularyDB.DATABASE_NAME);
+    // create database schema version 1
+    this.version(1).stores({
+      vocabulary: '++id,lastPracticed,practiceLevel,score',
+    });
 
-        // create database schema version 1
-        this.version(1).stores({
-            vocabulary: "++id,lastPracticed,practiceLevel,score"
-        });
-
-        // get access to vocabulary table
-        this.vocabulary = this.table("vocabulary");
-    }
+    // get access to vocabulary table
+    this.vocabulary = this.table('vocabulary');
+  }
 }

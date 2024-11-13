@@ -1,7 +1,20 @@
 import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonLabel, IonList, IonRow, IonToolbar, ViewWillEnter } from '@ionic/angular/standalone';
+import {
+  IonBackButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonRow,
+  IonToolbar,
+  ViewWillEnter,
+} from '@ionic/angular/standalone';
 import { PracticeLevel } from 'src/app/models/practice-level.model';
 import { IVocable } from 'src/app/models/vocable.model';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -12,10 +25,21 @@ import { VocabularyService } from 'src/app/services/vocabulary.service';
   templateUrl: './level-list.component.html',
   styleUrls: ['./level-list.component.scss'],
   standalone: true,
-  imports: [IonButtons, IonBackButton, IonHeader, IonToolbar, IonContent, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonList, IonLabel, IonRow]
+  imports: [
+    IonButtons,
+    IonBackButton,
+    IonHeader,
+    IonToolbar,
+    IonContent,
+    IonInfiniteScroll,
+    IonInfiniteScrollContent,
+    IonItem,
+    IonList,
+    IonLabel,
+    IonRow,
+  ],
 })
 export class LevelListComponent implements ViewWillEnter {
-
   private static readonly BATCH_SIZE: number = 20;
 
   vocabulary: IVocable[] = [];
@@ -26,8 +50,12 @@ export class LevelListComponent implements ViewWillEnter {
 
   private offset: number = 0;
 
-  constructor(private readonly vocabularyService: VocabularyService, private readonly route: ActivatedRoute, private readonly themeService: ThemeService) {
-    this.route.params.pipe(takeUntilDestroyed()).subscribe(async params => {
+  constructor(
+    private readonly vocabularyService: VocabularyService,
+    private readonly route: ActivatedRoute,
+    private readonly themeService: ThemeService,
+  ) {
+    this.route.params.pipe(takeUntilDestroyed()).subscribe(async (params) => {
       this.praticeLevel = Number.parseInt(params.praticeLevel) as PracticeLevel;
       this.offset = 0;
       this.vocabulary = [];
@@ -39,16 +67,19 @@ export class LevelListComponent implements ViewWillEnter {
     this.themeService.overwriteStatusBarColor('#f7f7f7', '#0d0d0d');
   }
 
-  async loadMore(event: { target: { complete: () => void; }; }) {
+  async loadMore(event: { target: { complete: () => void } }) {
     await this.loadBatch();
     event.target.complete();
   }
 
   private async loadBatch() {
-    const result = await this.vocabularyService.loadForPracticeLevel(this.praticeLevel, this.offset, LevelListComponent.BATCH_SIZE);
+    const result = await this.vocabularyService.loadForPracticeLevel(
+      this.praticeLevel,
+      this.offset,
+      LevelListComponent.BATCH_SIZE,
+    );
     this.offset += LevelListComponent.BATCH_SIZE;
     this.vocabulary = this.vocabulary.concat(result);
     this.canLoadMore = result.length != 0;
   }
-
 }

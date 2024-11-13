@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular/standalone';
-import { addIcons } from "ionicons";
-import { add, checkmarkOutline, rocketOutline, schoolOutline, trash, trendingUpOutline, trophyOutline } from "ionicons/icons";
+import { addIcons } from 'ionicons';
+import {
+  add,
+  checkmarkOutline,
+  rocketOutline,
+  schoolOutline,
+  trash,
+  trendingUpOutline,
+  trophyOutline,
+} from 'ionicons/icons';
 import { NgEventBus } from 'ng-event-bus';
 import { PracticeLevel } from 'src/app/models/practice-level.model';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -16,10 +24,9 @@ import { SettingsService } from 'src/app/services/settings.service';
 @Component({
   selector: 'app-vocabulary-list-page',
   templateUrl: './vocabulary-list.page.html',
-  styleUrl: './vocabulary-list.page.scss'
+  styleUrl: './vocabulary-list.page.scss',
 })
 export class VocabularyListPage implements OnInit {
-
   private static readonly BATCH_SIZE: number = 20;
 
   searchQuery: string = '';
@@ -37,25 +44,33 @@ export class VocabularyListPage implements OnInit {
     private readonly eventBus: NgEventBus,
     private readonly modalController: ModalController,
     private readonly themeService: ThemeService,
-    private readonly settingsService: SettingsService) {
-
+    private readonly settingsService: SettingsService,
+  ) {
     this.eventBus.on(VocabularyAddedEvent.ID).subscribe(async () => {
       this.offset = 0;
-      this.vocabulary = []
+      this.vocabulary = [];
       await this.loadVocabulary();
     });
     this.eventBus.on(VocabularyUpdatedEvent.ID).subscribe(async () => {
       this.offset = 0;
-      this.vocabulary = []
+      this.vocabulary = [];
       await this.loadVocabulary();
     });
     this.eventBus.on(VocabularyImportedEvent.ID).subscribe(async () => {
       this.offset = 0;
-      this.vocabulary = []
+      this.vocabulary = [];
       await this.loadVocabulary();
     });
 
-    addIcons({ add, trash, schoolOutline, trendingUpOutline, checkmarkOutline, trophyOutline, rocketOutline });
+    addIcons({
+      add,
+      trash,
+      schoolOutline,
+      trendingUpOutline,
+      checkmarkOutline,
+      trophyOutline,
+      rocketOutline,
+    });
   }
 
   async ngOnInit() {
@@ -67,28 +82,27 @@ export class VocabularyListPage implements OnInit {
     this.showPracticeLevel = this.settingsService.getShowPracticeLevelInVocabularyList();
   }
 
-  async search(event: { detail: { value?: string; }; }) {
-    console.log(event.detail.value)
+  async search(event: { detail: { value?: string } }) {
+    console.log(event.detail.value);
     this.searchQuery = event.detail.value;
     if (!this.searchQuery) {
       this.offset = 0;
-      this.vocabulary = []
+      this.vocabulary = [];
       await this.loadVocabulary();
-    }
-    else {
+    } else {
       this.vocabulary = await this.vocabularyService.search(this.searchQuery, VocabularyListPage.BATCH_SIZE);
       this.canLoadMore = false;
     }
   }
 
-  async loadMore(event: { target: { complete: () => void; }; }) {
+  async loadMore(event: { target: { complete: () => void } }) {
     await this.loadVocabulary();
     event.target.complete();
   }
 
   async deleteVocable(vocable: IVocable) {
     await this.vocabularyService.delete(vocable);
-    this.vocabulary = this.vocabulary.filter(element => element != vocable);
+    this.vocabulary = this.vocabulary.filter((element) => element != vocable);
   }
 
   async editVocable(vocable: IVocable) {
@@ -106,7 +120,7 @@ export class VocabularyListPage implements OnInit {
       case PracticeLevel.AtLeastOnceKnown:
         return 'school-outline';
       case PracticeLevel.OnTheRightTrack:
-        return 'trending-up-outline'
+        return 'trending-up-outline';
       case PracticeLevel.Good:
         return 'checkmark-outline';
       case PracticeLevel.VeryGood:
@@ -119,13 +133,13 @@ export class VocabularyListPage implements OnInit {
       case PracticeLevel.NeverKnownOrPracticed:
         return 'var(--ion-color-medium)';
       case PracticeLevel.AtLeastOnceKnown:
-        return "var(--ion-color-warning)";
+        return 'var(--ion-color-warning)';
       case PracticeLevel.OnTheRightTrack:
-        return "var(--ion-color-tertiary)";
+        return 'var(--ion-color-tertiary)';
       case PracticeLevel.Good:
-        return "var(--ion-color-success)";
+        return 'var(--ion-color-success)';
       case PracticeLevel.VeryGood:
-        return "var(--ion-color-success)";
+        return 'var(--ion-color-success)';
     }
   }
 
@@ -133,7 +147,7 @@ export class VocabularyListPage implements OnInit {
     const modal = await this.modalController.create({
       component: AddVocabularyComponent,
       presentingElement: document.querySelector('ion-router-outlet'),
-      componentProps: componentProps
+      componentProps: componentProps,
     });
     modal.onWillDismiss().then(() => {
       this.themeService.overwriteStatusBarColor('#ffffff');
@@ -148,5 +162,4 @@ export class VocabularyListPage implements OnInit {
     this.vocabulary = this.vocabulary.concat(result);
     this.canLoadMore = result.length != 0;
   }
-
 }

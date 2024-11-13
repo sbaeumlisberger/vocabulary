@@ -1,9 +1,7 @@
-import { IVocable } from "../models/vocable.model";
+import { IVocable } from '../models/vocable.model';
 
 export class VocabularyUpdatedEvent {
+  public static readonly ID = 'vocabulary:updated';
 
-    public static readonly ID = "vocabulary:updated";
-
-    constructor(public vocable: IVocable){}
-
+  constructor(public vocable: IVocable) {}
 }

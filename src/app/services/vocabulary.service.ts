@@ -8,11 +8,13 @@ import { IVocable } from '../models/vocable.model';
 import { VocabularyDB } from '../persistence/vocabulary-db';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class VocabularyService {
-
-  constructor(private db: VocabularyDB, private eventBus: NgEventBus) { }
+  constructor(
+    private db: VocabularyDB,
+    private eventBus: NgEventBus,
+  ) {}
 
   async getAll() {
     return await this.db.vocabulary.toArray();
@@ -27,22 +29,34 @@ export class VocabularyService {
   }
 
   async loadForPracticeLevel(practiceLevel: PracticeLevel, offset: number, limit: number): Promise<IVocable[]> {
-    return await this.db.vocabulary.reverse().filter(v => v.practiceLevel == practiceLevel).offset(offset).limit(limit).toArray();
+    return await this.db.vocabulary
+      .reverse()
+      .filter((v) => v.practiceLevel == practiceLevel)
+      .offset(offset)
+      .limit(limit)
+      .toArray();
   }
 
   async search(query: string, limit: number = 10): Promise<IVocable[]> {
     query = query.toLowerCase();
-    return await this.db.vocabulary.filter(v => v.foreignMeaning.toLowerCase().includes(query) || !!v.nativeMeanings.find(nm => nm.toLowerCase().includes(query))).limit(limit).toArray();
+    return await this.db.vocabulary
+      .filter(
+        (v) =>
+          v.foreignMeaning.toLowerCase().includes(query) ||
+          !!v.nativeMeanings.find((nm) => nm.toLowerCase().includes(query)),
+      )
+      .limit(limit)
+      .toArray();
   }
 
   async add(vocable: IVocable): Promise<void> {
-    await this.db.vocabulary.add(vocable)
+    await this.db.vocabulary.add(vocable);
     this.eventBus.cast(VocabularyAddedEvent.ID, new VocabularyAddedEvent(vocable));
   }
 
   async update(vocable: IVocable): Promise<void> {
     if (vocable.id === undefined) {
-      throw "vocable does not exist in database";
+      throw 'vocable does not exist in database';
     }
     await this.db.vocabulary.put(vocable);
     this.eventBus.cast(VocabularyUpdatedEvent.ID, new VocabularyUpdatedEvent(vocable));
@@ -50,7 +64,7 @@ export class VocabularyService {
 
   async delete(vocable: IVocable): Promise<void> {
     if (vocable.id === undefined) {
-      throw "vocable does not exist in database";
+      throw 'vocable does not exist in database';
     }
     await this.db.vocabulary.delete(vocable.id);
   }
@@ -63,5 +77,4 @@ export class VocabularyService {
     await this.db.vocabulary.bulkPut(vocabulary);
     this.eventBus.cast(VocabularyImportedEvent.ID, new VocabularyImportedEvent());
   }
-
 }

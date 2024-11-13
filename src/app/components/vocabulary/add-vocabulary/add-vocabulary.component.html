@@ -1,6 +1,6 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title style="text-align: center;">{{isEdit ? "Edit Vocable" : "Add Vocable"}}</ion-title>
+    <ion-title style="text-align: center">{{ isEdit ? 'Edit Vocable' : 'Add Vocable' }}</ion-title>
     <ion-buttons slot="start">
       <ion-button (click)="cancel()">Cancel</ion-button>
     </ion-buttons>
@@ -11,24 +11,23 @@
 </ion-header>
 
 <ion-content>
-  <br>
+  <br />
   <ion-list>
     <ion-item>
       <ion-label position="stacked">Foreign meaning</ion-label>
-      <ion-input id="foreignMeaning" [(ngModel)]="foreignMeaning" autocorrect="true">
-      </ion-input>
+      <ion-input id="foreignMeaning" [(ngModel)]="foreignMeaning" autocorrect="true"> </ion-input>
     </ion-item>
-    <br>
+    <br />
     <ion-item>
       <ion-label position="stacked">Native meanings</ion-label>
       <ion-input [(ngModel)]="nativeMeanings[0].value" autocorrect="true"></ion-input>
     </ion-item>
-    <ion-item *ngFor="let nativeMeaning of nativeMeanings.slice(1); index as i" id="nativeMeaning{{i}}">
+    <ion-item *ngFor="let nativeMeaning of nativeMeanings.slice(1); index as i" id="nativeMeaning{{ i }}">
       <ion-input [(ngModel)]="nativeMeaning.value" autocorrect="true"></ion-input>
     </ion-item>
-    <br>
+    <br />
     <ion-item lines="none">
-      <ion-button slot="end" style="width: 32px; height: 32px;" (click)="addNativeMeaning()">
+      <ion-button slot="end" style="width: 32px; height: 32px" (click)="addNativeMeaning()">
         <ion-icon icon="Add"></ion-icon>
       </ion-button>
     </ion-item>

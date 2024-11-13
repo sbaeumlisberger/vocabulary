@@ -10,20 +10,20 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
+@import '@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "@ionic/angular/css/normalize.css";
-@import "@ionic/angular/css/structure.css";
-@import "@ionic/angular/css/typography.css";
-@import "@ionic/angular/css/display.css";
+@import '@ionic/angular/css/normalize.css';
+@import '@ionic/angular/css/structure.css';
+@import '@ionic/angular/css/typography.css';
+@import '@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "@ionic/angular/css/padding.css";
-@import "@ionic/angular/css/float-elements.css";
-@import "@ionic/angular/css/text-alignment.css";
-@import "@ionic/angular/css/text-transformation.css";
-@import "@ionic/angular/css/flex-utils.css";
+@import '@ionic/angular/css/padding.css';
+@import '@ionic/angular/css/float-elements.css';
+@import '@ionic/angular/css/text-alignment.css';
+@import '@ionic/angular/css/text-transformation.css';
+@import '@ionic/angular/css/flex-utils.css';
 
 /**
  * Ionic Dark Palette
@@ -33,31 +33,30 @@
  */
 @import '@ionic/angular/css/palettes/dark.class.css';
 
-
 .ios ion-toggle {
-    --track-background-checked: #2dd36f;
+  --track-background-checked: #2dd36f;
 }
 
 .md ion-toolbar {
-    --background: #1976d2;
-    color: white;
+  --background: #1976d2;
+  color: white;
 }
 
 .content {
-    max-width: 1000px;
-    margin: auto;
+  max-width: 1000px;
+  margin: auto;
 }
 
 @media (orientation: landscape) {
-    .ios {
-        .content {
-            margin-left: 48px;
-            margin-right: 48px;
-        }
-
-        ion-item {
-            --ion-safe-area-left: 0px;
-            --ion-safe-area-right: 0px;
-        }
+  .ios {
+    .content {
+      margin-left: 48px;
+      margin-right: 48px;
     }
+
+    ion-item {
+      --ion-safe-area-left: 0px;
+      --ion-safe-area-right: 0px;
+    }
+  }
 }

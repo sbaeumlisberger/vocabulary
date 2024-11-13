@@ -5,22 +5,25 @@ import { VocabularyDB } from '../persistence/vocabulary-db';
 import { ArrayUtil } from '../utils/array.util';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PracticeService {
-
-  constructor(private db: VocabularyDB) { }
+  constructor(private db: VocabularyDB) {}
 
   async getVocabularyToPractice(): Promise<IVocable[]> {
     const _24hAgo = new Date().getTime() - 24 * 60 * 60 * 1000;
-    const vocabulary = await this.db.vocabulary.orderBy("score").filter(v => v.lastPracticed < _24hAgo).limit(10).toArray();
+    const vocabulary = await this.db.vocabulary
+      .orderBy('score')
+      .filter((v) => v.lastPracticed < _24hAgo)
+      .limit(10)
+      .toArray();
     ArrayUtil.randomizeOrder(vocabulary);
     return vocabulary;
   }
 
   async reportCorrect(vocable: IVocable) {
     if (vocable.id === undefined) {
-      throw "vocable does not exist in database";
+      throw 'vocable does not exist in database';
     }
     vocable.practicedCount++;
     vocable.correctCount++;
@@ -33,7 +36,7 @@ export class PracticeService {
 
   async reportWrong(vocable: IVocable) {
     if (vocable.id === undefined) {
-      throw "vocable does not exist in database";
+      throw 'vocable does not exist in database';
     }
     vocable.practicedCount++;
     vocable.lastPracticed = new Date().getTime();
@@ -49,7 +52,7 @@ export class PracticeService {
       score += 100;
     }
     if (vocable.practicedCount > 0) {
-      score += (vocable.correctCount / Math.max(vocable.practicedCount, 5)) * 200
+      score += (vocable.correctCount / Math.max(vocable.practicedCount, 5)) * 200;
     }
     return score;
   }
@@ -70,5 +73,4 @@ export class PracticeService {
     }
     return PracticeLevel.NeverKnownOrPracticed;
   }
-
 }
