@@ -39,7 +39,6 @@ import { IVocable } from '../../../models/vocable.model';
 import { VocabularyService } from '../../../services/vocabulary.service';
 import { AddVocabularyComponent } from '../add-vocabulary/add-vocabulary.component';
 import { SettingsService } from 'src/app/services/settings.service';
-import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-vocabulary-list-page',
@@ -56,7 +55,6 @@ import { NgFor } from '@angular/common';
     IonContent,
     IonSearchbar,
     IonList,
-    NgFor,
     IonItemSliding,
     IonItem,
     IonLabel,

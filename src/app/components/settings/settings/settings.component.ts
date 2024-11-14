@@ -24,7 +24,6 @@ import { ThemeService } from 'src/app/services/theme.service';
 import { UpdateService } from 'src/app/services/update.service';
 import { VocabularyService } from 'src/app/services/vocabulary.service';
 import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-settings',
@@ -41,10 +40,8 @@ import { NgFor, NgIf } from '@angular/common';
     IonLabel,
     IonSelect,
     FormsModule,
-    NgFor,
     IonSelectOption,
     IonToggle,
-    NgIf,
     IonText,
     IonDatetime,
     IonSpinner,

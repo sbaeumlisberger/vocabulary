@@ -25,9 +25,11 @@
     <ion-list inset="true" lines="none">
       <ion-item>
         <ion-select label="Theme" interface="popover" [(ngModel)]="selectedTheme">
-          <ion-select-option *ngFor="let theme of themes" [value]="theme">
-            {{ theme }}
-          </ion-select-option>
+          @for (theme of themes; track theme) {
+            <ion-select-option [value]="theme">
+              {{ theme }}
+            </ion-select-option>
+          }
         </ion-select>
       </ion-item>
     </ion-list>
@@ -48,28 +50,33 @@
           Daily reminder
         </ion-toggle>
       </ion-item>
-      <ion-item *ngIf="reminderEnabled" button="true" detail="false" (click)="toggleReminderTimePicker()">
-        <ion-label>Time</ion-label>
-        <ion-text style="padding-right: 4px" color="{{ showReminderTimePicker ? 'primary' : 'dark' }}"
-          >{{ reminderTime }}
-        </ion-text>
-      </ion-item>
-      <ion-datetime
-        style="--background: medium"
-        *ngIf="reminderEnabled && showReminderTimePicker"
-        size="cover"
-        presentation="time"
-        hourCycle="h23"
-        color="primary"
-        [(ngModel)]="reminderTime"
-        (ngModelChange)="onReminderTimeChanged()">
-      </ion-datetime>
+      @if (reminderEnabled) {
+        <ion-item button="true" detail="false" (click)="toggleReminderTimePicker()">
+          <ion-label>Time</ion-label>
+          <ion-text style="padding-right: 4px" color="{{ showReminderTimePicker ? 'primary' : 'dark' }}"
+            >{{ reminderTime }}
+          </ion-text>
+        </ion-item>
+      }
+      @if (reminderEnabled && showReminderTimePicker) {
+        <ion-datetime
+          style="--background: medium"
+          size="cover"
+          presentation="time"
+          hourCycle="h23"
+          color="primary"
+          [(ngModel)]="reminderTime"
+          (ngModelChange)="onReminderTimeChanged()">
+        </ion-datetime>
+      }
     </ion-list>
 
     <ion-list inset="true" lines="none">
       <ion-item lines="none" (click)="checkForUpdate()">
         <ion-label>Vocabulary - Version 0.1.19</ion-label>
-        <ion-spinner *ngIf="checkingForUpdate"></ion-spinner>
+        @if (checkingForUpdate) {
+          <ion-spinner></ion-spinner>
+        }
       </ion-item>
       <ion-item lines="none">
         <ion-label>© Sebastian Bäumlisberger</ion-label>

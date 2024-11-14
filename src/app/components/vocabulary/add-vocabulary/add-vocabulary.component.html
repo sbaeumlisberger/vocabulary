@@ -22,9 +22,11 @@
       <ion-label position="stacked">Native meanings</ion-label>
       <ion-input [(ngModel)]="nativeMeanings[0].value" autocorrect="true"></ion-input>
     </ion-item>
-    <ion-item *ngFor="let nativeMeaning of nativeMeanings.slice(1); index as i" id="nativeMeaning{{ i }}">
-      <ion-input [(ngModel)]="nativeMeaning.value" autocorrect="true"></ion-input>
-    </ion-item>
+    @for (nativeMeaning of nativeMeanings.slice(1); track nativeMeaning.value; let i = $index) {
+      <ion-item id="nativeMeaning{{ i }}">
+        <ion-input [(ngModel)]="nativeMeaning.value" autocorrect="true"></ion-input>
+      </ion-item>
+    }
     <br />
     <ion-item lines="none">
       <ion-button slot="end" style="width: 32px; height: 32px" (click)="addNativeMeaning()">

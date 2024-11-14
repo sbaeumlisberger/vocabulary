@@ -18,7 +18,6 @@ import { VocabularyService } from 'src/app/services/vocabulary.service';
 import { addIcons } from 'ionicons';
 import { add } from 'ionicons/icons';
 import { FormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-add-vocabulary',
@@ -37,7 +36,6 @@ import { NgFor } from '@angular/common';
     IonLabel,
     IonInput,
     FormsModule,
-    NgFor,
     IonIcon,
   ],
 })
