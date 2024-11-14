@@ -1,5 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ViewWillEnter } from '@ionic/angular/standalone';
+import {
+  AlertController,
+  ViewWillEnter,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonSelect,
+  IonSelectOption,
+  IonToggle,
+  IonText,
+  IonDatetime,
+  IonSpinner,
+} from '@ionic/angular/standalone';
 import { Theme } from 'src/app/models/theme.model';
 import { Vocable } from 'src/app/models/vocable.model';
 import { ReminderService } from 'src/app/services/reminder.service';
@@ -7,11 +23,32 @@ import { SettingsService } from 'src/app/services/settings.service';
 import { ThemeService } from 'src/app/services/theme.service';
 import { UpdateService } from 'src/app/services/update.service';
 import { VocabularyService } from 'src/app/services/vocabulary.service';
+import { FormsModule } from '@angular/forms';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
+  standalone: true,
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+    IonList,
+    IonItem,
+    IonLabel,
+    IonSelect,
+    FormsModule,
+    NgFor,
+    IonSelectOption,
+    IonToggle,
+    NgIf,
+    IonText,
+    IonDatetime,
+    IonSpinner,
+  ],
 })
 export class SettingsComponent implements OnInit, ViewWillEnter {
   reminderEnabled: boolean = false;

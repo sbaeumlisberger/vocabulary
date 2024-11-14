@@ -1,5 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular/standalone';
+import {
+  ModalController,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonButtons,
+  IonButton,
+  IonIcon,
+  IonContent,
+  IonSearchbar,
+  IonList,
+  IonItemSliding,
+  IonItem,
+  IonLabel,
+  IonItemOptions,
+  IonItemOption,
+  IonInfiniteScroll,
+  IonRow,
+  IonInfiniteScrollContent,
+} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import {
   add,
@@ -20,11 +39,33 @@ import { IVocable } from '../../../models/vocable.model';
 import { VocabularyService } from '../../../services/vocabulary.service';
 import { AddVocabularyComponent } from '../add-vocabulary/add-vocabulary.component';
 import { SettingsService } from 'src/app/services/settings.service';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-vocabulary-list-page',
   templateUrl: './vocabulary-list.page.html',
   styleUrl: './vocabulary-list.page.scss',
+  standalone: true,
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonButtons,
+    IonButton,
+    IonIcon,
+    IonContent,
+    IonSearchbar,
+    IonList,
+    NgFor,
+    IonItemSliding,
+    IonItem,
+    IonLabel,
+    IonItemOptions,
+    IonItemOption,
+    IonInfiniteScroll,
+    IonRow,
+    IonInfiniteScrollContent,
+  ],
 })
 export class VocabularyListPage implements OnInit {
   private static readonly BATCH_SIZE: number = 20;

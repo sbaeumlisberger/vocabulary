@@ -1,14 +1,45 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular/standalone';
+import {
+  ModalController,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonButtons,
+  IonButton,
+  IonContent,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonInput,
+  IonIcon,
+} from '@ionic/angular/standalone';
 import { IVocable, Vocable } from 'src/app/models/vocable.model';
 import { VocabularyService } from 'src/app/services/vocabulary.service';
 import { addIcons } from 'ionicons';
 import { add } from 'ionicons/icons';
+import { FormsModule } from '@angular/forms';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-add-vocabulary',
   templateUrl: './add-vocabulary.component.html',
   styleUrls: ['./add-vocabulary.component.scss'],
+  standalone: true,
+  imports: [
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonButtons,
+    IonButton,
+    IonContent,
+    IonList,
+    IonItem,
+    IonLabel,
+    IonInput,
+    FormsModule,
+    NgFor,
+    IonIcon,
+  ],
 })
 export class AddVocabularyComponent implements OnInit {
   vocable?: IVocable;

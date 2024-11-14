@@ -1,16 +1,27 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViewWillEnter } from '@ionic/angular/standalone';
+import {
+  ViewWillEnter,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonIcon,
+  IonProgressBar,
+} from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { checkmarkOutline, rocketOutline, schoolOutline, trendingUpOutline, trophyOutline } from 'ionicons/icons';
 import { ThemeService } from 'src/app/services/theme.service';
 import { PracticeLevel } from '../../../models/practice-level.model';
 import { StatisticsService } from '../../../services/statistics.service';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-statistics-overview-page',
   templateUrl: 'statistics-overview.page.html',
   styleUrls: ['statistics-overview.page.scss'],
+  standalone: true,
+  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonProgressBar, DecimalPipe],
 })
 export class SatisticsOverviewPage implements ViewWillEnter {
   vocabularyCount: number = 0;

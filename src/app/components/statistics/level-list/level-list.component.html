@@ -7,23 +7,25 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    @for (vocable of vocabulary; track $index) {
-      <ion-item>
-        <ion-label>
-          <h2>{{ vocable.foreignMeaning }}</h2>
-          <p>{{ vocable.nativeMeanings.join(', ') }}</p>
-        </ion-label>
-      </ion-item>
+  <div class="voc-content">
+    <ion-list>
+      @for (vocable of vocabulary; track $index) {
+        <ion-item>
+          <ion-label>
+            <h2>{{ vocable.foreignMeaning }}</h2>
+            <p>{{ vocable.nativeMeanings.join(', ') }}</p>
+          </ion-label>
+        </ion-item>
+      }
+    </ion-list>
+    @if (vocabulary.length === 0) {
+      <p class="ion-text-center">Nothing to show</p>
+    } @else {
+      <ion-infinite-scroll threshold="100px" [disabled]="!canLoadMore" (ionInfinite)="loadMore($event)">
+        <ion-row style="height: 8px"></ion-row>
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more...">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
     }
-  </ion-list>
-  @if (vocabulary.length === 0) {
-    <p class="ion-text-center">Nothing to show</p>
-  } @else {
-    <ion-infinite-scroll threshold="100px" [disabled]="!canLoadMore" (ionInfinite)="loadMore($event)">
-      <ion-row style="height: 8px"></ion-row>
-      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
-  }
+  </div>
 </ion-content>

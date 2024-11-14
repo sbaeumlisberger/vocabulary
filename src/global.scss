@@ -42,14 +42,14 @@
   color: white;
 }
 
-.content {
+.voc-content {
   max-width: 1000px;
   margin: auto;
 }
 
 @media (orientation: landscape) {
   .ios {
-    .content {
+    .voc-content {
       margin-left: 48px;
       margin-right: 48px;
     }
