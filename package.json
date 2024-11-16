@@ -1,6 +1,6 @@
 {
   "name": "vocabulary",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "Sebastian Bäumlisberger",
   "homepage": "https://ionicframework.com/",
   "scripts": {
@@ -11,7 +11,8 @@
     "lint": "ng lint",
     "format": "prettier . --write",
     "e2e": "ng e2e",
-    "secure-server": "npx angular-http-server -p 8443 --path=www/browser --https --key ./ssl/key.pem --cert ./ssl/cert.pem"
+    "secure-server": "npx angular-http-server -p 8443 --path=www/browser --https --key ./ssl/key.pem --cert ./ssl/cert.pem",
+    "ghpages": "ng build --base-href=/vocabulary/ && npx angular-cli-ghpages --dir=www/browser"
   },
   "private": true,
   "dependencies": {
