@@ -3,14 +3,14 @@ import { fromEvent, merge, of, Subscription, timer } from 'rxjs';
 import { filter, map, switchMap } from 'rxjs/operators';
 
 @Directive({
-  selector: '[appEnableLongPress]',
+  selector: '[vtLongPress]',
   standalone: true,
 })
 export class LongPressDirective implements OnDestroy {
   threshold = 1000;
 
   @Output()
-  longPress = new EventEmitter();
+  vtLongPress = new EventEmitter();
 
   private subscription: Subscription;
 
@@ -30,7 +30,7 @@ export class LongPressDirective implements OnDestroy {
         switchMap((down) => (down ? timer(this.threshold) : of(null))),
         filter((value) => value == 0),
       )
-      .subscribe(() => this.longPress.emit());
+      .subscribe(() => this.vtLongPress.emit());
   }
 
   ngOnDestroy(): void {

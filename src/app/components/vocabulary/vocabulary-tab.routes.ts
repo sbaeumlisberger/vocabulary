@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { VocabularyListPage } from './vocabulary-list/vocabulary-list.page';
+import { VocabularyListPageComponent } from './vocabulary-list/vocabulary-list-page.component';
 
 export const ROUTES: Routes = [
   {
     path: '',
-    component: VocabularyListPage,
+    component: VocabularyListPageComponent,
   },
 ];

@@ -41,9 +41,9 @@ import { AddVocabularyComponent } from '../add-vocabulary/add-vocabulary.compone
 import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
-  selector: 'app-vocabulary-list-page',
-  templateUrl: './vocabulary-list.page.html',
-  styleUrl: './vocabulary-list.page.scss',
+  selector: 'vt-vocabulary-list-page',
+  templateUrl: './vocabulary-list-page.component.html',
+  styleUrl: './vocabulary-list-page.component.scss',
   standalone: true,
   imports: [
     IonHeader,
@@ -65,7 +65,7 @@ import { SettingsService } from 'src/app/services/settings.service';
     IonInfiniteScrollContent,
   ],
 })
-export class VocabularyListPage implements OnInit {
+export class VocabularyListPageComponent implements OnInit {
   private static readonly BATCH_SIZE: number = 20;
 
   searchQuery: string = '';
@@ -129,7 +129,7 @@ export class VocabularyListPage implements OnInit {
       this.vocabulary = [];
       await this.loadVocabulary();
     } else {
-      this.vocabulary = await this.vocabularyService.search(this.searchQuery, VocabularyListPage.BATCH_SIZE);
+      this.vocabulary = await this.vocabularyService.search(this.searchQuery, VocabularyListPageComponent.BATCH_SIZE);
       this.canLoadMore = false;
     }
   }
@@ -196,8 +196,8 @@ export class VocabularyListPage implements OnInit {
   }
 
   private async loadVocabulary() {
-    const result = await this.vocabularyService.load(this.offset, VocabularyListPage.BATCH_SIZE);
-    this.offset += VocabularyListPage.BATCH_SIZE;
+    const result = await this.vocabularyService.load(this.offset, VocabularyListPageComponent.BATCH_SIZE);
+    this.offset += VocabularyListPageComponent.BATCH_SIZE;
     this.vocabulary = this.vocabulary.concat(result);
     this.canLoadMore = result.length != 0;
   }

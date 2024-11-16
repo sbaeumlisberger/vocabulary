@@ -18,7 +18,7 @@ module.exports = tseslint.config(
         'error',
         {
           type: 'attribute',
-          prefix: 'app',
+          prefix: 'vt',
           style: 'camelCase',
         },
       ],
@@ -26,12 +26,11 @@ module.exports = tseslint.config(
         'error',
         {
           type: 'element',
-          prefix: 'app',
+          prefix: 'vt',
           style: 'kebab-case',
         },
       ],
       '@typescript-eslint/no-inferrable-types': 'off',
-      '@angular-eslint/component-class-suffix': 'warn',
     },
   },
   {

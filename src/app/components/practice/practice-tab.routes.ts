@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import { PracticeComponent } from './flashcards/practice.component';
-import { PracticeOverviewPage } from './overview/pratice-overview.page';
+import { PracticeOverviewPageComponent } from './overview/pratice-overview-page.component';
 
 export const ROUTES: Routes = [
   {
     path: '',
-    component: PracticeOverviewPage,
+    component: PracticeOverviewPageComponent,
   },
   {
     path: 'flashcards/:mode',

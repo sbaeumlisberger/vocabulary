@@ -54,8 +54,7 @@
                     <ion-button
                       fill="clear"
                       (click)="speak()"
-                      appEnableLongPress
-                      (longPress)="toggleAutoSpeak()"
+                      (vtLongPress)="toggleAutoSpeak()"
                       [color]="autoSpeak ? 'primary' : 'dark'">
                       <ion-icon size="large" name="volume-medium-outline"> </ion-icon>
                     </ion-button>

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { TabsPage } from './tabs.page';
+import { TabsComponent } from './tabs.component';
 
 export const ROUTES: Routes = [
   {
@@ -9,7 +9,7 @@ export const ROUTES: Routes = [
   },
   {
     path: '',
-    component: TabsPage,
+    component: TabsComponent,
     children: [
       {
         path: 'vocabulary',

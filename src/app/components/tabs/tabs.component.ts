@@ -4,13 +4,13 @@ import { listOutline, schoolOutline, statsChartOutline, cogOutline } from 'ionic
 import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-tabs',
-  templateUrl: 'tabs.page.html',
-  styleUrls: ['tabs.page.scss'],
+  selector: 'vt-tabs',
+  templateUrl: './tabs.component.html',
+  styleUrls: ['./tabs.component.scss'],
   standalone: true,
   imports: [IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel],
 })
-export class TabsPage {
+export class TabsComponent {
   constructor() {
     addIcons({ listOutline, schoolOutline, statsChartOutline, cogOutline });
   }

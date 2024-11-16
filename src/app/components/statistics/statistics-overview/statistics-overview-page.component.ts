@@ -17,13 +17,13 @@ import { StatisticsService } from '../../../services/statistics.service';
 import { DecimalPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-statistics-overview-page',
-  templateUrl: 'statistics-overview.page.html',
-  styleUrls: ['statistics-overview.page.scss'],
+  selector: 'vt-statistics-overview-page',
+  templateUrl: './statistics-overview-page.component.html',
+  styleUrls: ['./statistics-overview-page.component.scss'],
   standalone: true,
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonProgressBar, DecimalPipe],
 })
-export class SatisticsOverviewPage implements ViewWillEnter {
+export class SatisticsOverviewPageComponent implements ViewWillEnter {
   vocabularyCount: number = 0;
 
   neverKnownOrPracticedCount: number = 0;

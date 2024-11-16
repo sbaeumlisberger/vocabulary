@@ -26,12 +26,7 @@ export class ReminderService {
   }
 
   getReminderTime(): Time {
-    return (
-      this.storageService.get(ReminderService.REMINDER_TIME_KEY) ?? {
-        hours: 17,
-        minutes: 0,
-      }
-    );
+    return this.storageService.get(ReminderService.REMINDER_TIME_KEY) ?? { hours: 17, minutes: 0 };
   }
 
   enableReminder(time: Time) {
@@ -61,7 +56,7 @@ export class ReminderService {
     reminderDate.setMilliseconds(0);
     let timeoutMilliseconds = reminderDate.getTime() - Date.now();
 
-    if (timeoutMilliseconds < 10) {
+    if (timeoutMilliseconds < 1000) {
       timeoutMilliseconds += 1000 * 60 * 60 * 24;
     }
 

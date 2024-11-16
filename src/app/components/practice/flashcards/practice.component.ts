@@ -40,7 +40,7 @@ enum PracticeMode {
 }
 
 @Component({
-  selector: 'app-practice',
+  selector: 'vt-practice',
   templateUrl: './practice.component.html',
   styleUrls: ['./practice.component.scss'],
   standalone: true,

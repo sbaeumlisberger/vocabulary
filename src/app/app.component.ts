@@ -5,7 +5,7 @@ import { UpdateService } from './services/update.service';
 import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 
 @Component({
-  selector: 'app-root',
+  selector: 'vt-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
   standalone: true,

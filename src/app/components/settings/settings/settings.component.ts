@@ -26,7 +26,7 @@ import { VocabularyService } from 'src/app/services/vocabulary.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-settings',
+  selector: 'vt-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
   standalone: true,

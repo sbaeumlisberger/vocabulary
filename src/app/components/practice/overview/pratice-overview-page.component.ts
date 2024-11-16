@@ -13,9 +13,9 @@ import {
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-pratice-overview',
-  templateUrl: 'pratice-overview.page.html',
-  styleUrls: ['pratice-overview.page.scss'],
+  selector: 'vt-pratice-overview-page',
+  templateUrl: './pratice-overview-page.component.html',
+  styleUrls: ['./pratice-overview-page.component.scss'],
   standalone: true,
   imports: [
     IonHeader,
@@ -29,7 +29,7 @@ import { RouterLink } from '@angular/router';
     IonCardContent,
   ],
 })
-export class PracticeOverviewPage {
+export class PracticeOverviewPageComponent {
   constructor(private themeService: ThemeService) {}
 
   ionViewWillEnter() {

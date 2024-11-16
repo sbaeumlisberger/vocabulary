@@ -21,7 +21,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 import { VocabularyService } from 'src/app/services/vocabulary.service';
 
 @Component({
-  selector: 'app-level-list',
+  selector: 'vt-level-list',
   templateUrl: './level-list.component.html',
   styleUrls: ['./level-list.component.scss'],
   standalone: true,

@@ -20,7 +20,7 @@ import { add } from 'ionicons/icons';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-vocabulary',
+  selector: 'vt-add-vocabulary',
   templateUrl: './add-vocabulary.component.html',
   styleUrls: ['./add-vocabulary.component.scss'],
   standalone: true,
