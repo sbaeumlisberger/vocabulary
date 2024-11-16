@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/settings/settings/settings.component.scss"],
+  "sourcesContent": [":host-context(.ios body.dark) {\n  --ion-item-background: #1c1c1d;\n}\n\n:host-context(.ios body.light) ion-content,\n:host-context(.ios body.light) ion-toolbar {\n  --background: #f2f2f7;\n}\n\n:host-context(.md body.light) ion-list {\n  background: #f8f8f8;\n}\n:host-context(.md body.light) ion-item {\n  --background: #f8f8f8;\n}\n\n:host-context(.md) .themeLabel {\n  margin-left: 16px;\n}\n\n:host-context(.md) ion-toggle {\n  padding-right: 6px;\n}\n\n#import {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  opacity: 0;\n}\n"],
+  "mappings": ";AAAA,cAAA,CAAA,IAAA,IAAA,CAAA;AACE,yBAAA;;AAGF,cAAA,CAAA,IAAA,IAAA,CAAA,OAAA;AAAA,cAAA,CAAA,IAAA,IAAA,CAAA,OAAA;AAEE,gBAAA;;AAGF,cAAA,CAAA,GAAA,IAAA,CAAA,OAAA;AACE,cAAA;;AAEF,cAAA,CAAA,GAAA,IAAA,CAAA,OAAA;AACE,gBAAA;;AAGF,cAAA,CAAA,IAAA,CAAA;AACE,eAAA;;AAGF,cAAA,CAAA,IAAA;AACE,iBAAA;;AAGF,CAAA;AACE,SAAA;AACA,UAAA;AACA,YAAA;AACA,WAAA;;",
+  "names": []
+}

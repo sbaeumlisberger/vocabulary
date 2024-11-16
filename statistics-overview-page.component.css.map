@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/statistics/statistics-overview/statistics-overview-page.component.scss"],
+  "sourcesContent": [".level-button {\n  all: unset;\n  width: 100%;\n}\n\n.level-header {\n  margin-top: 48px;\n  margin-bottom: 16px;\n  align-items: center;\n  display: flex;\n  gap: 8px;\n}\n"],
+  "mappings": ";AAAA,CAAA;AACE,OAAA;AACA,SAAA;;AAGF,CAAA;AACE,cAAA;AACA,iBAAA;AACA,eAAA;AACA,WAAA;AACA,OAAA;;",
+  "names": []
+}

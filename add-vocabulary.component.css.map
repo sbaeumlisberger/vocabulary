@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/vocabulary/add-vocabulary/add-vocabulary.component.scss"],
+  "sourcesContent": [":host-context(.ios body.dark) {\n  --ion-item-background: #transparent;\n}\n"],
+  "mappings": ";AAAA,cAAA,CAAA,IAAA,IAAA,CAAA;AACE,yBAAA;;",
+  "names": []
+}

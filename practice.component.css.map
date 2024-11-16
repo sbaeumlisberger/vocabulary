@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/components/practice/flashcards/practice.component.scss"],
+  "sourcesContent": [":host-context(.ios body.light) ion-content,\n:host-context(.ios body.light) ion-toolbar {\n  --background: #f2f2f7;\n}\n\n.progressDot {\n  width: 16px;\n  height: 16px;\n  border-radius: 50%;\n  margin: auto;\n}\n\n#flashcard {\n  margin: auto;\n  margin-top: 32px;\n  width: calc(100% - 128px);\n  max-width: 400px;\n}\n\n.stretchedButton {\n  display: block;\n  width: 80%;\n  max-width: 256px;\n  margin-left: auto;\n  margin-right: auto;\n}\n"],
+  "mappings": ";AAAA,cAAA,CAAA,IAAA,IAAA,CAAA,OAAA;AAAA,cAAA,CAAA,IAAA,IAAA,CAAA,OAAA;AAEE,gBAAA;;AAGF,CAAA;AACE,SAAA;AACA,UAAA;AACA,iBAAA;AACA,UAAA;;AAGF,CAAA;AACE,UAAA;AACA,cAAA;AACA,SAAA,KAAA,KAAA,EAAA;AACA,aAAA;;AAGF,CAAA;AACE,WAAA;AACA,SAAA;AACA,aAAA;AACA,eAAA;AACA,gBAAA;;",
+  "names": []
+}
