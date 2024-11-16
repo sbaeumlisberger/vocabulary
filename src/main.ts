@@ -12,6 +12,9 @@ if (environment.production) {
   enableProdMode();
 }
 
+// disable browser history to avoid conflicts with tab-based navigation (non-linear routing)
+window.history.pushState = window.history.replaceState;
+
 bootstrapApplication(AppComponent, {
   providers: [
     importProvidersFrom(
