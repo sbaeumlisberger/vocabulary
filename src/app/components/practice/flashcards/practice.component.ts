@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Vocable } from 'src/app/models/vocable.model';
 import { PracticeService } from 'src/app/services/practice.service';
 import { DecimalPipe, Location } from '@angular/common';
@@ -61,6 +61,7 @@ enum PracticeMode {
     IonHeader,
     LongPressDirective,
     DecimalPipe,
+    RouterLink,
   ],
 })
 export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
@@ -160,10 +161,6 @@ export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
     await this.practiceService.reportWrong(this.currentVocable!);
     this.results[this.index] = false;
     this.showNext();
-  }
-
-  goBack() {
-    this.location.back();
   }
 
   async continuePractice() {
