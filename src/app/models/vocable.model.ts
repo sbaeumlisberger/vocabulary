@@ -20,7 +20,7 @@ export class Vocable implements IVocable {
   public wasCorrect: boolean = false;
   public practicedCount: number = 0;
   public correctCount: number = 0;
-  public practiceLevel: PracticeLevel = PracticeLevel.NeverKnownOrPracticed;
+  public practiceLevel: PracticeLevel = PracticeLevel.NewOrNeverCorrect;
   public score: number = 0;
 
   constructor(foreignMeaning: string, nativeMeanings: string[]) {

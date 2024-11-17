@@ -15,35 +15,34 @@
     <br />
     <p style="font-weight: bold">Total words: {{ vocabularyCount }}</p>
 
-    <button class="level-button" (click)="showList(praticeLevelEnum.NeverKnownOrPracticed)">
+    <button class="level-button" (click)="showList(praticeLevelEnum.NewOrNeverCorrect)">
       <div class="level-header">
         <ion-icon icon="rocket-outline"></ion-icon>
         <span>
-          Never known or practiced: {{ neverKnownOrPracticedPercent | number: '1.0-0' }}% ({{
-            neverKnownOrPracticedCount
-          }}
+          New or never correct: {{ newOrNeverCorrectPercent | number: '1.0-0' }}% ({{ newOrNeverCorrectCount }}
           words)
         </span>
       </div>
-      <ion-progress-bar [value]="neverKnownOrPracticedPercent / 100"></ion-progress-bar>
+      <ion-progress-bar [value]="newOrNeverCorrectPercent / 100"></ion-progress-bar>
     </button>
 
-    <button class="level-button" (click)="showList(praticeLevelEnum.AtLeastOnceKnown)">
+    <button class="level-button" (click)="showList(praticeLevelEnum.AtLeastOnceCorrect)">
       <div class="level-header">
         <ion-icon icon="school-outline"> </ion-icon>
-        <span>Known at least once: {{ atLeastOncePercent | number: '1.0-0' }}% ({{ atLeastOnceCount }} words)</span>
+        <span>
+          At least once correct: {{ atLeastOnceCorrectPercent | number: '1.0-0' }}% ({{ atLeastOnceCorrectCount }}
+          words)
+        </span>
       </div>
-      <ion-progress-bar [value]="atLeastOncePercent / 100"></ion-progress-bar>
+      <ion-progress-bar [value]="atLeastOnceCorrectPercent / 100"></ion-progress-bar>
     </button>
 
-    <button class="level-button" (click)="showList(praticeLevelEnum.OnTheRightTrack)">
+    <button class="level-button" (click)="showList(praticeLevelEnum.Improving)">
       <div class="level-header">
         <ion-icon icon="trending-up-outline"> </ion-icon>
-        <span
-          >On the right track: {{ onTheRightTackPercent | number: '1.0-0' }}% ({{ onTheRightTackCount }} words)</span
-        >
+        <span>Improving: {{ improvingPercent | number: '1.0-0' }}% ({{ improvingCount }} words) </span>
       </div>
-      <ion-progress-bar [value]="onTheRightTackPercent / 100"></ion-progress-bar>
+      <ion-progress-bar [value]="improvingPercent / 100"></ion-progress-bar>
     </button>
 
     <button class="level-button" (click)="showList(praticeLevelEnum.Good)">
@@ -54,12 +53,12 @@
       <ion-progress-bar [value]="goodPercent / 100"></ion-progress-bar>
     </button>
 
-    <button class="level-button" (click)="showList(praticeLevelEnum.VeryGood)">
+    <button class="level-button" (click)="showList(praticeLevelEnum.Excellent)">
       <div class="level-header">
         <ion-icon icon="trophy-outline"></ion-icon>
-        <span>Very good: {{ veryGoodPercent | number: '1.0-0' }}% ({{ veryGoodCount }} words)</span>
+        <span>Excellent: {{ excellentPercent | number: '1.0-0' }}% ({{ excellentCount }} words)</span>
       </div>
-      <ion-progress-bar [value]="veryGoodPercent / 100"></ion-progress-bar>
+      <ion-progress-bar [value]="excellentPercent / 100"></ion-progress-bar>
     </button>
   </div>
 </ion-content>

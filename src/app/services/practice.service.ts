@@ -60,17 +60,17 @@ export class PracticeService {
   private calcPracticeLevel(vocable: IVocable): PracticeLevel {
     const correntRate = vocable.correctCount / vocable.practicedCount;
     if (vocable.practicedCount >= 10 && correntRate > 0.9) {
-      return PracticeLevel.VeryGood;
+      return PracticeLevel.Excellent;
     }
     if (vocable.practicedCount >= 5 && correntRate > 0.75) {
       return PracticeLevel.Good;
     }
     if (vocable.practicedCount >= 2 && correntRate > 0.5) {
-      return PracticeLevel.OnTheRightTrack;
+      return PracticeLevel.Improving;
     }
     if (vocable.correctCount >= 1) {
-      return PracticeLevel.AtLeastOnceKnown;
+      return PracticeLevel.AtLeastOnceCorrect;
     }
-    return PracticeLevel.NeverKnownOrPracticed;
+    return PracticeLevel.NewOrNeverCorrect;
   }
 }

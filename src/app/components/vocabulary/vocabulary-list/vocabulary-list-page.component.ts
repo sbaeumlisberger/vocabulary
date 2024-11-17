@@ -154,30 +154,30 @@ export class VocabularyListPageComponent implements OnInit {
 
   toIcon(vocable: IVocable) {
     switch (vocable.practiceLevel) {
-      case PracticeLevel.NeverKnownOrPracticed:
+      case PracticeLevel.NewOrNeverCorrect:
         return 'rocket-outline';
-      case PracticeLevel.AtLeastOnceKnown:
+      case PracticeLevel.AtLeastOnceCorrect:
         return 'school-outline';
-      case PracticeLevel.OnTheRightTrack:
+      case PracticeLevel.Improving:
         return 'trending-up-outline';
       case PracticeLevel.Good:
         return 'checkmark-outline';
-      case PracticeLevel.VeryGood:
+      case PracticeLevel.Excellent:
         return 'trophy-outline';
     }
   }
 
   toColor(vocable: IVocable) {
     switch (vocable.practiceLevel) {
-      case PracticeLevel.NeverKnownOrPracticed:
+      case PracticeLevel.NewOrNeverCorrect:
         return 'var(--ion-color-medium)';
-      case PracticeLevel.AtLeastOnceKnown:
+      case PracticeLevel.AtLeastOnceCorrect:
         return 'var(--ion-color-warning)';
-      case PracticeLevel.OnTheRightTrack:
+      case PracticeLevel.Improving:
         return 'var(--ion-color-tertiary)';
       case PracticeLevel.Good:
         return 'var(--ion-color-success)';
-      case PracticeLevel.VeryGood:
+      case PracticeLevel.Excellent:
         return 'var(--ion-color-success)';
     }
   }

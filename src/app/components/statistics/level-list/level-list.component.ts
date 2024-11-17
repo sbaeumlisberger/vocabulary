@@ -1,3 +1,4 @@
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute } from '@angular/router';
@@ -37,6 +38,8 @@ import { VocabularyService } from 'src/app/services/vocabulary.service';
     IonList,
     IonLabel,
     IonRow,
+    DecimalPipe,
+    DatePipe,
   ],
 })
 export class LevelListComponent implements ViewWillEnter {

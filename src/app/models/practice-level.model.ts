@@ -1,7 +1,7 @@
 export enum PracticeLevel {
-  NeverKnownOrPracticed,
-  AtLeastOnceKnown,
-  OnTheRightTrack,
+  NewOrNeverCorrect,
+  AtLeastOnceCorrect,
+  Improving,
   Good,
-  VeryGood,
+  Excellent,
 }

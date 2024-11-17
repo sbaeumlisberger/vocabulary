@@ -26,20 +26,20 @@ import { DecimalPipe } from '@angular/common';
 export class SatisticsOverviewPageComponent implements ViewWillEnter {
   vocabularyCount: number = 0;
 
-  neverKnownOrPracticedCount: number = 0;
-  neverKnownOrPracticedPercent: number = 0;
+  newOrNeverCorrectCount: number = 0;
+  newOrNeverCorrectPercent: number = 0;
 
-  atLeastOnceCount: number = 0;
-  atLeastOncePercent: number = 0;
+  atLeastOnceCorrectCount: number = 0;
+  atLeastOnceCorrectPercent: number = 0;
 
-  onTheRightTackCount: number = 0;
-  onTheRightTackPercent: number = 0;
+  improvingCount: number = 0;
+  improvingPercent: number = 0;
 
   goodCount: number = 0;
   goodPercent: number = 0;
 
-  veryGoodCount: number = 0;
-  veryGoodPercent: number = 0;
+  excellentCount: number = 0;
+  excellentPercent: number = 0;
 
   praticeLevelEnum = PracticeLevel;
 
@@ -65,26 +65,24 @@ export class SatisticsOverviewPageComponent implements ViewWillEnter {
   private async loadStatistics() {
     this.vocabularyCount = await this.statisticsService.getVocabularyCount();
 
-    this.neverKnownOrPracticedCount = await this.statisticsService.getVocabularyCountByPractiveLevel(
-      PracticeLevel.NeverKnownOrPracticed,
+    this.newOrNeverCorrectCount = await this.statisticsService.getVocabularyCountByPractiveLevel(
+      PracticeLevel.NewOrNeverCorrect,
     );
-    this.neverKnownOrPracticedPercent = (this.neverKnownOrPracticedCount / this.vocabularyCount) * 100;
+    this.newOrNeverCorrectPercent = (this.newOrNeverCorrectCount / this.vocabularyCount) * 100;
 
-    this.atLeastOnceCount = await this.statisticsService.getVocabularyCountByPractiveLevel(
-      PracticeLevel.AtLeastOnceKnown,
+    this.atLeastOnceCorrectCount = await this.statisticsService.getVocabularyCountByPractiveLevel(
+      PracticeLevel.AtLeastOnceCorrect,
     );
-    this.atLeastOncePercent = (this.atLeastOnceCount / this.vocabularyCount) * 100;
+    this.atLeastOnceCorrectPercent = (this.atLeastOnceCorrectCount / this.vocabularyCount) * 100;
 
-    this.onTheRightTackCount = await this.statisticsService.getVocabularyCountByPractiveLevel(
-      PracticeLevel.OnTheRightTrack,
-    );
-    this.onTheRightTackPercent = (this.onTheRightTackCount / this.vocabularyCount) * 100;
+    this.improvingCount = await this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.Improving);
+    this.improvingPercent = (this.improvingCount / this.vocabularyCount) * 100;
 
     this.goodCount = await this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.Good);
     this.goodPercent = (this.goodCount / this.vocabularyCount) * 100;
 
-    this.veryGoodCount = await this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.VeryGood);
-    this.veryGoodPercent = (this.veryGoodCount / this.vocabularyCount) * 100;
+    this.excellentCount = await this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.Excellent);
+    this.excellentPercent = (this.excellentCount / this.vocabularyCount) * 100;
   }
 
   showList(practiceLevel: PracticeLevel) {
