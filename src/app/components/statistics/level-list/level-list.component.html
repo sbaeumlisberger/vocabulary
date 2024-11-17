@@ -16,13 +16,17 @@
             <p>{{ vocable.nativeMeanings.join(', ') }}</p>
           </ion-label>
           <ion-label slot="end">
-            <p class="ion-text-right">
-              {{ vocable.correctCount }} of {{ vocable.practicedCount }} correct ({{
-                (100 * vocable.correctCount) / vocable.practicedCount | number: '1.0-0'
-              }}%)
-            </p>
-            <p class="ion-text-right">Last time: {{ vocable.wasCorrect ? ' correct ✓' : 'wrong ✕' }}</p>
-            <p class="ion-text-right">at {{ vocable.lastPracticed | date: 'mediumDate' }}</p>
+            @if (vocable.practicedCount > 0) {
+              <p class="ion-text-right">
+                {{ vocable.correctCount }} of {{ vocable.practicedCount }} correct ({{
+                  (100 * vocable.correctCount) / vocable.practicedCount | number: '1.0-0'
+                }}%)
+              </p>
+              <p class="ion-text-right">Last time: {{ vocable.wasCorrect ? ' correct ✓' : 'wrong ✕' }}</p>
+              <p class="ion-text-right">at {{ vocable.lastPracticed | date: 'mediumDate' }}</p>
+            } @else {
+              <p class="ion-text-right">New</p>
+            }
           </ion-label>
         </ion-item>
       }

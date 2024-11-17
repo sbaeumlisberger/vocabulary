@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Vocable } from 'src/app/models/vocable.model';
 import { PracticeService } from 'src/app/services/practice.service';
-import { DecimalPipe, Location } from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { ThemeService } from 'src/app/services/theme.service';
 import { addIcons } from 'ionicons';
 import {
@@ -32,6 +32,7 @@ import {
   IonIcon,
   IonButton,
 } from '@ionic/angular/standalone';
+import { SettingsService } from 'src/app/services/settings.service';
 
 enum PracticeMode {
   RANDOM = 'random',
@@ -87,8 +88,8 @@ export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
 
   private mode: PracticeMode;
 
-  private readonly foreignLanguage = 'en-UK';
-  private readonly nativeLanguage = 'de-DE';
+  private foreignLanguage = this.settingsService.getForeignLanguage();
+  private nativeLanguage = this.settingsService.getNativeLanguage();
 
   private flashcardFrontLanguage = this.nativeLanguage;
   private flashcardBackLanguage = this.foreignLanguage;
@@ -101,10 +102,10 @@ export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
   ];
 
   constructor(
-    private route: ActivatedRoute,
-    private practiceService: PracticeService,
-    private location: Location,
-    private themeService: ThemeService,
+    private readonly route: ActivatedRoute,
+    private readonly practiceService: PracticeService,
+    private readonly settingsService: SettingsService,
+    private readonly themeService: ThemeService,
   ) {
     addIcons({
       syncOutline,
@@ -116,13 +117,17 @@ export class PracticeComponent implements ViewWillEnter, ViewWillLeave {
     });
 
     this.route.params.pipe(takeUntilDestroyed()).subscribe(async (params) => {
-      this.mode = params.mode;
-      await this.loadVocabularyToPractice();
+      if (params.mode !== this.mode) {
+        this.mode = params.mode;
+        await this.loadVocabularyToPractice();
+      }
     });
   }
 
   ionViewWillEnter(): void {
     this.themeService.overwriteStatusBarColor('#f2f2f7');
+    this.foreignLanguage = this.settingsService.getForeignLanguage();
+    this.nativeLanguage = this.settingsService.getNativeLanguage();
   }
 
   ionViewWillLeave() {

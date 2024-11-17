@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   AlertController,
   ViewWillEnter,
@@ -24,6 +24,7 @@ import { ThemeService } from 'src/app/services/theme.service';
 import { UpdateService } from 'src/app/services/update.service';
 import { VocabularyService } from 'src/app/services/vocabulary.service';
 import { FormsModule } from '@angular/forms';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'vt-settings',
@@ -47,29 +48,21 @@ import { FormsModule } from '@angular/forms';
     IonSpinner,
   ],
 })
-export class SettingsComponent implements OnInit, ViewWillEnter {
-  reminderEnabled: boolean = false;
+export class SettingsComponent implements ViewWillEnter {
+  readonly themes: Theme[] = Object.values(Theme);
+  selectedTheme: Theme = this.themeService.getTheme();
 
-  showPracticeLevelInVocabularyList: boolean = false;
+  showPracticeLevelInVocabularyList: boolean = this.settingsService.getShowPracticeLevelInVocabularyList();
 
-  reminderTime: string;
+  languages = new Set<string>(speechSynthesis.getVoices().map((voice) => voice.lang));
+  foreignLanguage: string = this.settingsService.getForeignLanguage();
+  nativeLanguage: string = this.settingsService.getNativeLanguage();
 
+  reminderEnabled: boolean = this.reminderService.isReminderEnabled();
+  reminderTime: string = this.formatTime(this.reminderService.getReminderTime());
   showReminderTimePicker: boolean = false;
 
   checkingForUpdate: boolean = false;
-
-  get themes() {
-    return Object.values(Theme);
-  }
-
-  get selectedTheme(): Theme {
-    return this.themeService.getTheme();
-  }
-
-  set selectedTheme(theme: Theme) {
-    this.themeService.changeTheme(theme);
-    this.themeService.overwriteStatusBarColor('#f2f2f7');
-  }
 
   constructor(
     private readonly vocabularyService: VocabularyService,
@@ -78,14 +71,12 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
     private readonly reminderService: ReminderService,
     private readonly updateService: UpdateService,
     private readonly settingsService: SettingsService,
-  ) {}
-
-  ngOnInit(): void {
-    this.showPracticeLevelInVocabularyList = this.settingsService.getShowPracticeLevelInVocabularyList();
-    this.reminderEnabled = this.reminderService.isReminderEnabled();
-    const reminderTime = this.reminderService.getReminderTime();
-    this.reminderTime =
-      reminderTime.hours.toString().padStart(2, '0') + ':' + reminderTime.minutes.toString().padStart(2, '0');
+  ) {
+    const onvoiceschanged = () => {
+      this.languages = new Set<string>(speechSynthesis.getVoices().map((voice) => voice.lang));
+      speechSynthesis.removeEventListener('voiceschanged', onvoiceschanged);
+    };
+    speechSynthesis.addEventListener('voiceschanged', onvoiceschanged);
   }
 
   ionViewWillEnter(): void {
@@ -135,8 +126,21 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
     a.click();
   }
 
+  onThemeChanged() {
+    this.themeService.changeTheme(this.selectedTheme);
+    this.themeService.overwriteStatusBarColor('#f2f2f7');
+  }
+
   onShowPracticeLevelInVocabularyListChanged() {
     this.settingsService.setShowPracticeLevelInVocabularyList(this.showPracticeLevelInVocabularyList);
+  }
+
+  onForeignLanguageChanged() {
+    this.settingsService.setForeignLanguage(this.foreignLanguage);
+  }
+
+  onNativeLanguageChanged() {
+    this.settingsService.setNativeLanguage(this.nativeLanguage);
   }
 
   async onReminderEnabledChanged() {
@@ -183,5 +187,9 @@ export class SettingsComponent implements OnInit, ViewWillEnter {
       });
       alert.present();
     }
+  }
+
+  private formatTime(time: Time): string {
+    return time.hours.toString().padStart(2, '0') + ':' + time.minutes.toString().padStart(2, '0');
   }
 }
