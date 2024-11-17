@@ -13,21 +13,21 @@ import {
 } from "./chunk-EYXWBQOK.js";
 import {
   SettingsService
-} from "./chunk-N6PL7VJI.js";
+} from "./chunk-4N2IAORW.js";
 import {
   VocabularyAddedEvent,
   VocabularyImportedEvent,
   VocabularyService,
   VocabularyUpdatedEvent
-} from "./chunk-YJDAYYSX.js";
-import "./chunk-DRFQZRDU.js";
-import "./chunk-QQUQBA7I.js";
+} from "./chunk-BVL4TEAY.js";
+import "./chunk-KN5UXUNX.js";
+import "./chunk-547I2RLP.js";
 import {
   NgEventBus
-} from "./chunk-AXEYWA6G.js";
+} from "./chunk-TMZJMPQV.js";
 import {
   ThemeService
-} from "./chunk-S3F3BUGQ.js";
+} from "./chunk-X6SODPWO.js";
 import {
   FormsModule,
   IonButton,
@@ -78,7 +78,7 @@ import {
   ɵɵtwoWayBindingSet,
   ɵɵtwoWayListener,
   ɵɵtwoWayProperty
-} from "./chunk-CP2L26DD.js";
+} from "./chunk-XVSWVG7T.js";
 import "./chunk-AGXZWMF6.js";
 import "./chunk-KQEJHESJ.js";
 import "./chunk-XAVXJ42G.js";
@@ -533,4 +533,4 @@ var ROUTES = [
 export {
   ROUTES
 };
-//# sourceMappingURL=vocabulary-tab.routes-CBJRNLUX.js.map
+//# sourceMappingURL=vocabulary-tab.routes-UMY4AE4K.js.map

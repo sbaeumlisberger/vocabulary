@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/services/settings.service.ts"],
-  "sourcesContent": ["import { Inject, Injectable } from '@angular/core';\nimport { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class SettingsService {\n  private static readonly SHOW_PRATICE_LEVEL_IN_VOCABULARY_LIST_KEY = 'showPracticeLevelInVocabularyList';\n\n  constructor(@Inject(LOCAL_STORAGE) private readonly storageService: StorageService) {}\n\n  getShowPracticeLevelInVocabularyList(): boolean {\n    return this.storageService.get(SettingsService.SHOW_PRATICE_LEVEL_IN_VOCABULARY_LIST_KEY) ?? false;\n  }\n\n  setShowPracticeLevelInVocabularyList(value: boolean) {\n    return this.storageService.set(SettingsService.SHOW_PRATICE_LEVEL_IN_VOCABULARY_LIST_KEY, value);\n  }\n}\n"],
-  "mappings": ";;;;;;;;;AAMM,IAAO,kBAAP,MAAO,iBAAe;;AACF,SAAA,4CAA4C;EAAoC;EAExG,YAAoD,gBAA8B;AAA9B,SAAA,iBAAA;EAAiC;EAErF,uCAAoC;AAClC,WAAO,KAAK,eAAe,IAAI,iBAAgB,yCAAyC,KAAK;EAC/F;EAEA,qCAAqC,OAAc;AACjD,WAAO,KAAK,eAAe,IAAI,iBAAgB,2CAA2C,KAAK;EACjG;;;uCAXW,kBAAe,mBAGN,aAAa,CAAA;IAAA;EAAA;;4EAHtB,kBAAe,SAAf,iBAAe,WAAA,YAFd,OAAM,CAAA;EAAA;;",
-  "names": []
-}

@@ -2,14 +2,14 @@ import {
   ReminderService,
   ServiceWorkerModule,
   UpdateService
-} from "./chunk-4NYJEFBS.js";
-import "./chunk-QQUQBA7I.js";
+} from "./chunk-ZENDF3DI.js";
+import "./chunk-547I2RLP.js";
 import {
   NgEventBus
-} from "./chunk-AXEYWA6G.js";
+} from "./chunk-TMZJMPQV.js";
 import {
   ThemeService
-} from "./chunk-S3F3BUGQ.js";
+} from "./chunk-X6SODPWO.js";
 import {
   IonApp,
   IonRouterOutlet,
@@ -27,7 +27,7 @@ import {
   ɵɵelement,
   ɵɵelementEnd,
   ɵɵelementStart
-} from "./chunk-CP2L26DD.js";
+} from "./chunk-XVSWVG7T.js";
 import "./chunk-AGXZWMF6.js";
 import "./chunk-KQEJHESJ.js";
 import "./chunk-XAVXJ42G.js";
@@ -54,7 +54,7 @@ var environment = {
 var ROUTES = [
   {
     path: "",
-    loadChildren: () => import("./tabs-routes-PGQFIIHR.js").then((m) => m.ROUTES)
+    loadChildren: () => import("./tabs-routes-KBY2CYNU.js").then((m) => m.ROUTES)
   }
 ];
 

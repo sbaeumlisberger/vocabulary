@@ -1,6 +1,6 @@
 import {
   takeUntilDestroyed
-} from "./chunk-TTGGLO62.js";
+} from "./chunk-N2AOIVZF.js";
 import {
   PracticeLevel
 } from "./chunk-AKFMU4OS.js";
@@ -14,14 +14,14 @@ import {
 } from "./chunk-EYXWBQOK.js";
 import {
   VocabularyService
-} from "./chunk-YJDAYYSX.js";
+} from "./chunk-BVL4TEAY.js";
 import {
   VocabularyDB
-} from "./chunk-DRFQZRDU.js";
-import "./chunk-AXEYWA6G.js";
+} from "./chunk-KN5UXUNX.js";
+import "./chunk-TMZJMPQV.js";
 import {
   ThemeService
-} from "./chunk-S3F3BUGQ.js";
+} from "./chunk-X6SODPWO.js";
 import {
   ActivatedRoute,
   DatePipe,
@@ -68,7 +68,7 @@ import {
   ɵɵtextInterpolate1,
   ɵɵtextInterpolate2,
   ɵɵtextInterpolate3
-} from "./chunk-CP2L26DD.js";
+} from "./chunk-XVSWVG7T.js";
 import "./chunk-AGXZWMF6.js";
 import "./chunk-KQEJHESJ.js";
 import "./chunk-XAVXJ42G.js";
@@ -279,6 +279,37 @@ var SatisticsOverviewPageComponent = class _SatisticsOverviewPageComponent {
 
 // src/app/components/statistics/level-list/level-list.component.ts
 var _forTrack0 = ($index, $item) => $item.id;
+function LevelListComponent_For_8_Conditional_7_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "p", 6);
+    \u0275\u0275text(1);
+    \u0275\u0275pipe(2, "number");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(3, "p", 6);
+    \u0275\u0275text(4);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(5, "p", 6);
+    \u0275\u0275text(6);
+    \u0275\u0275pipe(7, "date");
+    \u0275\u0275elementEnd();
+  }
+  if (rf & 2) {
+    const vocable_r1 = \u0275\u0275nextContext().$implicit;
+    \u0275\u0275advance();
+    \u0275\u0275textInterpolate3(" ", vocable_r1.correctCount, " of ", vocable_r1.practicedCount, " correct (", \u0275\u0275pipeBind2(2, 5, 100 * vocable_r1.correctCount / vocable_r1.practicedCount, "1.0-0"), "%) ");
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1("Last time: ", vocable_r1.wasCorrect ? " correct \u2713" : "wrong \u2715", "");
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1("at ", \u0275\u0275pipeBind2(7, 8, vocable_r1.lastPracticed, "mediumDate"), "");
+  }
+}
+function LevelListComponent_For_8_Conditional_8_Template(rf, ctx) {
+  if (rf & 1) {
+    \u0275\u0275elementStart(0, "p", 6);
+    \u0275\u0275text(1, "New");
+    \u0275\u0275elementEnd();
+  }
+}
 function LevelListComponent_For_8_Template(rf, ctx) {
   if (rf & 1) {
     \u0275\u0275elementStart(0, "ion-item")(1, "ion-label")(2, "h2");
@@ -287,17 +318,9 @@ function LevelListComponent_For_8_Template(rf, ctx) {
     \u0275\u0275elementStart(4, "p");
     \u0275\u0275text(5);
     \u0275\u0275elementEnd()();
-    \u0275\u0275elementStart(6, "ion-label", 5)(7, "p", 6);
-    \u0275\u0275text(8);
-    \u0275\u0275pipe(9, "number");
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(10, "p", 6);
-    \u0275\u0275text(11);
-    \u0275\u0275elementEnd();
-    \u0275\u0275elementStart(12, "p", 6);
-    \u0275\u0275text(13);
-    \u0275\u0275pipe(14, "date");
-    \u0275\u0275elementEnd()()();
+    \u0275\u0275elementStart(6, "ion-label", 5);
+    \u0275\u0275template(7, LevelListComponent_For_8_Conditional_7_Template, 8, 11)(8, LevelListComponent_For_8_Conditional_8_Template, 2, 0, "p", 6);
+    \u0275\u0275elementEnd()();
   }
   if (rf & 2) {
     const vocable_r1 = ctx.$implicit;
@@ -305,12 +328,8 @@ function LevelListComponent_For_8_Template(rf, ctx) {
     \u0275\u0275textInterpolate(vocable_r1.foreignMeaning);
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate(vocable_r1.nativeMeanings.join(", "));
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate3(" ", vocable_r1.correctCount, " of ", vocable_r1.practicedCount, " correct (", \u0275\u0275pipeBind2(9, 7, 100 * vocable_r1.correctCount / vocable_r1.practicedCount, "1.0-0"), "%) ");
-    \u0275\u0275advance(3);
-    \u0275\u0275textInterpolate1("Last time: ", vocable_r1.wasCorrect ? " correct \u2713" : "wrong \u2715", "");
     \u0275\u0275advance(2);
-    \u0275\u0275textInterpolate1("at ", \u0275\u0275pipeBind2(14, 10, vocable_r1.lastPracticed, "mediumDate"), "");
+    \u0275\u0275conditional(vocable_r1.practicedCount > 0 ? 7 : 8);
   }
 }
 function LevelListComponent_Conditional_9_Template(rf, ctx) {
@@ -384,7 +403,7 @@ var LevelListComponent = class _LevelListComponent {
         \u0275\u0275element(3, "ion-back-button", 1);
         \u0275\u0275elementEnd()()();
         \u0275\u0275elementStart(4, "ion-content")(5, "div", 2)(6, "ion-list");
-        \u0275\u0275repeaterCreate(7, LevelListComponent_For_8_Template, 15, 13, "ion-item", null, _forTrack0);
+        \u0275\u0275repeaterCreate(7, LevelListComponent_For_8_Template, 9, 3, "ion-item", null, _forTrack0);
         \u0275\u0275elementEnd();
         \u0275\u0275template(9, LevelListComponent_Conditional_9_Template, 2, 0, "p", 3)(10, LevelListComponent_Conditional_10_Template, 3, 1, "ion-infinite-scroll", 4);
         \u0275\u0275elementEnd()();
@@ -430,4 +449,4 @@ var ROUTES = [
 export {
   ROUTES
 };
-//# sourceMappingURL=statistics-tab.routes-U4RQY3KF.js.map
+//# sourceMappingURL=statistics-tab.routes-5724CCFT.js.map

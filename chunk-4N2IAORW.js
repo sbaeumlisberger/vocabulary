@@ -1,15 +1,21 @@
 import {
   LOCAL_STORAGE
-} from "./chunk-QQUQBA7I.js";
+} from "./chunk-547I2RLP.js";
 import {
   ɵɵdefineInjectable,
   ɵɵinject
-} from "./chunk-CP2L26DD.js";
+} from "./chunk-XVSWVG7T.js";
 
 // src/app/services/settings.service.ts
 var SettingsService = class _SettingsService {
   static {
     this.SHOW_PRATICE_LEVEL_IN_VOCABULARY_LIST_KEY = "showPracticeLevelInVocabularyList";
+  }
+  static {
+    this.FOREIGN_LANGUAGE_KEY = "foreignLanguage";
+  }
+  static {
+    this.NATIVE_LANGUAGE_KEY = "nativeLanguage";
   }
   constructor(storageService) {
     this.storageService = storageService;
@@ -19,6 +25,18 @@ var SettingsService = class _SettingsService {
   }
   setShowPracticeLevelInVocabularyList(value) {
     return this.storageService.set(_SettingsService.SHOW_PRATICE_LEVEL_IN_VOCABULARY_LIST_KEY, value);
+  }
+  getForeignLanguage() {
+    return this.storageService.get(_SettingsService.FOREIGN_LANGUAGE_KEY) ?? "en-GB";
+  }
+  setForeignLanguage(value) {
+    return this.storageService.set(_SettingsService.FOREIGN_LANGUAGE_KEY, value);
+  }
+  getNativeLanguage() {
+    return this.storageService.get(_SettingsService.NATIVE_LANGUAGE_KEY) ?? "de-DE";
+  }
+  setNativeLanguage(value) {
+    return this.storageService.set(_SettingsService.NATIVE_LANGUAGE_KEY, value);
   }
   static {
     this.\u0275fac = function SettingsService_Factory(__ngFactoryType__) {
@@ -33,4 +51,4 @@ var SettingsService = class _SettingsService {
 export {
   SettingsService
 };
-//# sourceMappingURL=chunk-N6PL7VJI.js.map
+//# sourceMappingURL=chunk-4N2IAORW.js.map

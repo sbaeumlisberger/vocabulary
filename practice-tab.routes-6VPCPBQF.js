@@ -1,6 +1,6 @@
 import {
   takeUntilDestroyed
-} from "./chunk-TTGGLO62.js";
+} from "./chunk-N2AOIVZF.js";
 import {
   PracticeLevel
 } from "./chunk-AKFMU4OS.js";
@@ -14,11 +14,15 @@ import {
   volumeMediumOutline
 } from "./chunk-EYXWBQOK.js";
 import {
+  SettingsService
+} from "./chunk-4N2IAORW.js";
+import {
   VocabularyDB
-} from "./chunk-DRFQZRDU.js";
+} from "./chunk-KN5UXUNX.js";
+import "./chunk-547I2RLP.js";
 import {
   ThemeService
-} from "./chunk-S3F3BUGQ.js";
+} from "./chunk-X6SODPWO.js";
 import {
   ActivatedRoute,
   DecimalPipe,
@@ -40,7 +44,6 @@ import {
   IonRow,
   IonTitle,
   IonToolbar,
-  Location,
   RouterLink,
   filter,
   fromEvent,
@@ -81,7 +84,7 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate,
   ɵɵtextInterpolate1
-} from "./chunk-CP2L26DD.js";
+} from "./chunk-XVSWVG7T.js";
 import "./chunk-AGXZWMF6.js";
 import "./chunk-KQEJHESJ.js";
 import "./chunk-XAVXJ42G.js";
@@ -364,10 +367,10 @@ var PracticeMode;
   PracticeMode2["NATIVE_TO_FOREIGN"] = "native-to-foreign";
 })(PracticeMode || (PracticeMode = {}));
 var PracticeComponent = class _PracticeComponent {
-  constructor(route, practiceService, location, themeService) {
+  constructor(route, practiceService, settingsService, themeService) {
     this.route = route;
     this.practiceService = practiceService;
-    this.location = location;
+    this.settingsService = settingsService;
     this.themeService = themeService;
     this.flashcardFrontText = "";
     this.flashcardBackText = "";
@@ -378,8 +381,8 @@ var PracticeComponent = class _PracticeComponent {
     this.autoSpeak = false;
     this.vocables = [];
     this.index = -1;
-    this.foreignLanguage = "en-UK";
-    this.nativeLanguage = "de-DE";
+    this.foreignLanguage = this.settingsService.getForeignLanguage();
+    this.nativeLanguage = this.settingsService.getNativeLanguage();
     this.flashcardFrontLanguage = this.nativeLanguage;
     this.flashcardBackLanguage = this.foreignLanguage;
     this.knownAbbreviations = [
@@ -397,12 +400,16 @@ var PracticeComponent = class _PracticeComponent {
       volumeMediumOutline
     });
     this.route.params.pipe(takeUntilDestroyed()).subscribe((params) => __async(this, null, function* () {
-      this.mode = params.mode;
-      yield this.loadVocabularyToPractice();
+      if (params.mode !== this.mode) {
+        this.mode = params.mode;
+        yield this.loadVocabularyToPractice();
+      }
     }));
   }
   ionViewWillEnter() {
     this.themeService.overwriteStatusBarColor("#f2f2f7");
+    this.foreignLanguage = this.settingsService.getForeignLanguage();
+    this.nativeLanguage = this.settingsService.getNativeLanguage();
   }
   ionViewWillLeave() {
     speechSynthesis.cancel();
@@ -493,7 +500,7 @@ var PracticeComponent = class _PracticeComponent {
   }
   static {
     this.\u0275fac = function PracticeComponent_Factory(__ngFactoryType__) {
-      return new (__ngFactoryType__ || _PracticeComponent)(\u0275\u0275directiveInject(ActivatedRoute), \u0275\u0275directiveInject(PracticeService), \u0275\u0275directiveInject(Location), \u0275\u0275directiveInject(ThemeService));
+      return new (__ngFactoryType__ || _PracticeComponent)(\u0275\u0275directiveInject(ActivatedRoute), \u0275\u0275directiveInject(PracticeService), \u0275\u0275directiveInject(SettingsService), \u0275\u0275directiveInject(ThemeService));
     };
   }
   static {
@@ -541,7 +548,7 @@ var PracticeComponent = class _PracticeComponent {
   }
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(PracticeComponent, { className: "PracticeComponent", filePath: "src\\app\\components\\practice\\flashcards\\practice.component.ts", lineNumber: 67 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(PracticeComponent, { className: "PracticeComponent", filePath: "src\\app\\components\\practice\\flashcards\\practice.component.ts", lineNumber: 68 });
 })();
 
 // src/app/components/practice/overview/pratice-overview-page.component.ts
@@ -630,4 +637,4 @@ var ROUTES = [
 export {
   ROUTES
 };
-//# sourceMappingURL=practice-tab.routes-CDFSNPQF.js.map
+//# sourceMappingURL=practice-tab.routes-6VPCPBQF.js.map

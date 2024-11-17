@@ -76339,7 +76339,6 @@ export {
   APP_INITIALIZER,
   ApplicationRef,
   enableProdMode,
-  Location,
   DatePipe,
   DecimalPipe,
   isPlatformBrowser2 as isPlatformBrowser,
@@ -77155,4 +77154,4 @@ export {
    * (C) Ionic http://ionicframework.com - MIT License
    *)
 */
-//# sourceMappingURL=chunk-CP2L26DD.js.map
+//# sourceMappingURL=chunk-XVSWVG7T.js.map
