@@ -1,9 +1,9 @@
 import {
   takeUntilDestroyed
-} from "./chunk-WH3V3LTG.js";
+} from "./chunk-TTGGLO62.js";
 import {
   PracticeLevel
-} from "./chunk-A4CYRQ7C.js";
+} from "./chunk-AKFMU4OS.js";
 import {
   addIcons,
   checkmarkOutline,
@@ -14,16 +14,17 @@ import {
 } from "./chunk-EYXWBQOK.js";
 import {
   VocabularyService
-} from "./chunk-UM2YYBV7.js";
+} from "./chunk-YJDAYYSX.js";
 import {
   VocabularyDB
-} from "./chunk-SAKA2635.js";
-import "./chunk-LNQB3EUR.js";
+} from "./chunk-DRFQZRDU.js";
+import "./chunk-AXEYWA6G.js";
 import {
   ThemeService
-} from "./chunk-RL753YUK.js";
+} from "./chunk-S3F3BUGQ.js";
 import {
   ActivatedRoute,
+  DatePipe,
   DecimalPipe,
   IonBackButton,
   IonButtons,
@@ -65,8 +66,9 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate,
   ɵɵtextInterpolate1,
-  ɵɵtextInterpolate2
-} from "./chunk-YWMOKFFN.js";
+  ɵɵtextInterpolate2,
+  ɵɵtextInterpolate3
+} from "./chunk-CP2L26DD.js";
 import "./chunk-AGXZWMF6.js";
 import "./chunk-KQEJHESJ.js";
 import "./chunk-XAVXJ42G.js";
@@ -118,16 +120,16 @@ var SatisticsOverviewPageComponent = class _SatisticsOverviewPageComponent {
     this.themeService = themeService;
     this.router = router;
     this.vocabularyCount = 0;
-    this.neverKnownOrPracticedCount = 0;
-    this.neverKnownOrPracticedPercent = 0;
-    this.atLeastOnceCount = 0;
-    this.atLeastOncePercent = 0;
-    this.onTheRightTackCount = 0;
-    this.onTheRightTackPercent = 0;
+    this.newOrNeverCorrectCount = 0;
+    this.newOrNeverCorrectPercent = 0;
+    this.atLeastOnceCorrectCount = 0;
+    this.atLeastOnceCorrectPercent = 0;
+    this.improvingCount = 0;
+    this.improvingPercent = 0;
     this.goodCount = 0;
     this.goodPercent = 0;
-    this.veryGoodCount = 0;
-    this.veryGoodPercent = 0;
+    this.excellentCount = 0;
+    this.excellentPercent = 0;
     this.praticeLevelEnum = PracticeLevel;
     addIcons({
       rocketOutline,
@@ -146,16 +148,16 @@ var SatisticsOverviewPageComponent = class _SatisticsOverviewPageComponent {
   loadStatistics() {
     return __async(this, null, function* () {
       this.vocabularyCount = yield this.statisticsService.getVocabularyCount();
-      this.neverKnownOrPracticedCount = yield this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.NeverKnownOrPracticed);
-      this.neverKnownOrPracticedPercent = this.neverKnownOrPracticedCount / this.vocabularyCount * 100;
-      this.atLeastOnceCount = yield this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.AtLeastOnceKnown);
-      this.atLeastOncePercent = this.atLeastOnceCount / this.vocabularyCount * 100;
-      this.onTheRightTackCount = yield this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.OnTheRightTrack);
-      this.onTheRightTackPercent = this.onTheRightTackCount / this.vocabularyCount * 100;
+      this.newOrNeverCorrectCount = yield this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.NewOrNeverCorrect);
+      this.newOrNeverCorrectPercent = this.newOrNeverCorrectCount / this.vocabularyCount * 100;
+      this.atLeastOnceCorrectCount = yield this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.AtLeastOnceCorrect);
+      this.atLeastOnceCorrectPercent = this.atLeastOnceCorrectCount / this.vocabularyCount * 100;
+      this.improvingCount = yield this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.Improving);
+      this.improvingPercent = this.improvingCount / this.vocabularyCount * 100;
       this.goodCount = yield this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.Good);
       this.goodPercent = this.goodCount / this.vocabularyCount * 100;
-      this.veryGoodCount = yield this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.VeryGood);
-      this.veryGoodPercent = this.veryGoodCount / this.vocabularyCount * 100;
+      this.excellentCount = yield this.statisticsService.getVocabularyCountByPractiveLevel(PracticeLevel.Excellent);
+      this.excellentPercent = this.excellentCount / this.vocabularyCount * 100;
     });
   }
   showList(practiceLevel) {
@@ -182,7 +184,7 @@ var SatisticsOverviewPageComponent = class _SatisticsOverviewPageComponent {
         \u0275\u0275elementEnd();
         \u0275\u0275elementStart(13, "button", 6);
         \u0275\u0275listener("click", function SatisticsOverviewPageComponent_Template_button_click_13_listener() {
-          return ctx.showList(ctx.praticeLevelEnum.NeverKnownOrPracticed);
+          return ctx.showList(ctx.praticeLevelEnum.NewOrNeverCorrect);
         });
         \u0275\u0275elementStart(14, "div", 7);
         \u0275\u0275element(15, "ion-icon", 8);
@@ -194,7 +196,7 @@ var SatisticsOverviewPageComponent = class _SatisticsOverviewPageComponent {
         \u0275\u0275elementEnd();
         \u0275\u0275elementStart(20, "button", 6);
         \u0275\u0275listener("click", function SatisticsOverviewPageComponent_Template_button_click_20_listener() {
-          return ctx.showList(ctx.praticeLevelEnum.AtLeastOnceKnown);
+          return ctx.showList(ctx.praticeLevelEnum.AtLeastOnceCorrect);
         });
         \u0275\u0275elementStart(21, "div", 7);
         \u0275\u0275element(22, "ion-icon", 10);
@@ -206,7 +208,7 @@ var SatisticsOverviewPageComponent = class _SatisticsOverviewPageComponent {
         \u0275\u0275elementEnd();
         \u0275\u0275elementStart(27, "button", 6);
         \u0275\u0275listener("click", function SatisticsOverviewPageComponent_Template_button_click_27_listener() {
-          return ctx.showList(ctx.praticeLevelEnum.OnTheRightTrack);
+          return ctx.showList(ctx.praticeLevelEnum.Improving);
         });
         \u0275\u0275elementStart(28, "div", 7);
         \u0275\u0275element(29, "ion-icon", 11);
@@ -230,7 +232,7 @@ var SatisticsOverviewPageComponent = class _SatisticsOverviewPageComponent {
         \u0275\u0275elementEnd();
         \u0275\u0275elementStart(41, "button", 6);
         \u0275\u0275listener("click", function SatisticsOverviewPageComponent_Template_button_click_41_listener() {
-          return ctx.showList(ctx.praticeLevelEnum.VeryGood);
+          return ctx.showList(ctx.praticeLevelEnum.Excellent);
         });
         \u0275\u0275elementStart(42, "div", 7);
         \u0275\u0275element(43, "ion-icon", 13);
@@ -248,25 +250,25 @@ var SatisticsOverviewPageComponent = class _SatisticsOverviewPageComponent {
         \u0275\u0275advance(8);
         \u0275\u0275textInterpolate1("Total words: ", ctx.vocabularyCount, "");
         \u0275\u0275advance(5);
-        \u0275\u0275textInterpolate2(" Never known or practiced: ", \u0275\u0275pipeBind2(18, 18, ctx.neverKnownOrPracticedPercent, "1.0-0"), "% (", ctx.neverKnownOrPracticedCount, " words) ");
+        \u0275\u0275textInterpolate2(" New or never correct: ", \u0275\u0275pipeBind2(18, 18, ctx.newOrNeverCorrectPercent, "1.0-0"), "% (", ctx.newOrNeverCorrectCount, " words) ");
         \u0275\u0275advance(2);
-        \u0275\u0275property("value", ctx.neverKnownOrPracticedPercent / 100);
+        \u0275\u0275property("value", ctx.newOrNeverCorrectPercent / 100);
         \u0275\u0275advance(5);
-        \u0275\u0275textInterpolate2("Known at least once: ", \u0275\u0275pipeBind2(25, 21, ctx.atLeastOncePercent, "1.0-0"), "% (", ctx.atLeastOnceCount, " words)");
+        \u0275\u0275textInterpolate2(" At least once correct: ", \u0275\u0275pipeBind2(25, 21, ctx.atLeastOnceCorrectPercent, "1.0-0"), "% (", ctx.atLeastOnceCorrectCount, " words) ");
         \u0275\u0275advance(2);
-        \u0275\u0275property("value", ctx.atLeastOncePercent / 100);
+        \u0275\u0275property("value", ctx.atLeastOnceCorrectPercent / 100);
         \u0275\u0275advance(5);
-        \u0275\u0275textInterpolate2("On the right track: ", \u0275\u0275pipeBind2(32, 24, ctx.onTheRightTackPercent, "1.0-0"), "% (", ctx.onTheRightTackCount, " words)");
+        \u0275\u0275textInterpolate2("Improving: ", \u0275\u0275pipeBind2(32, 24, ctx.improvingPercent, "1.0-0"), "% (", ctx.improvingCount, " words) ");
         \u0275\u0275advance(2);
-        \u0275\u0275property("value", ctx.onTheRightTackPercent / 100);
+        \u0275\u0275property("value", ctx.improvingPercent / 100);
         \u0275\u0275advance(5);
         \u0275\u0275textInterpolate2("Good: ", \u0275\u0275pipeBind2(39, 27, ctx.goodPercent, "1.0-0"), "% (", ctx.goodCount, " words)");
         \u0275\u0275advance(2);
         \u0275\u0275property("value", ctx.goodPercent / 100);
         \u0275\u0275advance(5);
-        \u0275\u0275textInterpolate2("Very good: ", \u0275\u0275pipeBind2(46, 30, ctx.veryGoodPercent, "1.0-0"), "% (", ctx.veryGoodCount, " words)");
+        \u0275\u0275textInterpolate2("Excellent: ", \u0275\u0275pipeBind2(46, 30, ctx.excellentPercent, "1.0-0"), "% (", ctx.excellentCount, " words)");
         \u0275\u0275advance(2);
-        \u0275\u0275property("value", ctx.veryGoodPercent / 100);
+        \u0275\u0275property("value", ctx.excellentPercent / 100);
       }
     }, dependencies: [IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonProgressBar, DecimalPipe], styles: ["\n\n.level-button[_ngcontent-%COMP%] {\n  all: unset;\n  width: 100%;\n}\n.level-header[_ngcontent-%COMP%] {\n  margin-top: 48px;\n  margin-bottom: 16px;\n  align-items: center;\n  display: flex;\n  gap: 8px;\n}\n/*# sourceMappingURL=statistics-overview-page.component.css.map */"] });
   }
@@ -284,6 +286,17 @@ function LevelListComponent_For_8_Template(rf, ctx) {
     \u0275\u0275elementEnd();
     \u0275\u0275elementStart(4, "p");
     \u0275\u0275text(5);
+    \u0275\u0275elementEnd()();
+    \u0275\u0275elementStart(6, "ion-label", 5)(7, "p", 6);
+    \u0275\u0275text(8);
+    \u0275\u0275pipe(9, "number");
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(10, "p", 6);
+    \u0275\u0275text(11);
+    \u0275\u0275elementEnd();
+    \u0275\u0275elementStart(12, "p", 6);
+    \u0275\u0275text(13);
+    \u0275\u0275pipe(14, "date");
     \u0275\u0275elementEnd()()();
   }
   if (rf & 2) {
@@ -292,6 +305,12 @@ function LevelListComponent_For_8_Template(rf, ctx) {
     \u0275\u0275textInterpolate(vocable_r1.foreignMeaning);
     \u0275\u0275advance(2);
     \u0275\u0275textInterpolate(vocable_r1.nativeMeanings.join(", "));
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate3(" ", vocable_r1.correctCount, " of ", vocable_r1.practicedCount, " correct (", \u0275\u0275pipeBind2(9, 7, 100 * vocable_r1.correctCount / vocable_r1.practicedCount, "1.0-0"), "%) ");
+    \u0275\u0275advance(3);
+    \u0275\u0275textInterpolate1("Last time: ", vocable_r1.wasCorrect ? " correct \u2713" : "wrong \u2715", "");
+    \u0275\u0275advance(2);
+    \u0275\u0275textInterpolate1("at ", \u0275\u0275pipeBind2(14, 10, vocable_r1.lastPracticed, "mediumDate"), "");
   }
 }
 function LevelListComponent_Conditional_9_Template(rf, ctx) {
@@ -304,13 +323,13 @@ function LevelListComponent_Conditional_9_Template(rf, ctx) {
 function LevelListComponent_Conditional_10_Template(rf, ctx) {
   if (rf & 1) {
     const _r2 = \u0275\u0275getCurrentView();
-    \u0275\u0275elementStart(0, "ion-infinite-scroll", 5);
+    \u0275\u0275elementStart(0, "ion-infinite-scroll", 7);
     \u0275\u0275listener("ionInfinite", function LevelListComponent_Conditional_10_Template_ion_infinite_scroll_ionInfinite_0_listener($event) {
       \u0275\u0275restoreView(_r2);
       const ctx_r2 = \u0275\u0275nextContext();
       return \u0275\u0275resetView(ctx_r2.loadMore($event));
     });
-    \u0275\u0275element(1, "ion-row", 6)(2, "ion-infinite-scroll-content", 7);
+    \u0275\u0275element(1, "ion-row", 8)(2, "ion-infinite-scroll-content", 9);
     \u0275\u0275elementEnd();
   }
   if (rf & 2) {
@@ -359,13 +378,13 @@ var LevelListComponent = class _LevelListComponent {
     };
   }
   static {
-    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LevelListComponent, selectors: [["vt-level-list"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 11, vars: 1, consts: [["slot", "start"], ["defaultHref", "/statistics"], [1, "voc-content"], [1, "ion-text-center"], ["threshold", "100px", 3, "disabled"], ["threshold", "100px", 3, "ionInfinite", "disabled"], [2, "height", "8px"], ["loadingSpinner", "bubbles", "loadingText", "Loading more..."]], template: function LevelListComponent_Template(rf, ctx) {
+    this.\u0275cmp = /* @__PURE__ */ \u0275\u0275defineComponent({ type: _LevelListComponent, selectors: [["vt-level-list"]], standalone: true, features: [\u0275\u0275StandaloneFeature], decls: 11, vars: 1, consts: [["slot", "start"], ["defaultHref", "/statistics"], [1, "voc-content"], [1, "ion-text-center"], ["threshold", "100px", 3, "disabled"], ["slot", "end"], [1, "ion-text-right"], ["threshold", "100px", 3, "ionInfinite", "disabled"], [2, "height", "8px"], ["loadingSpinner", "bubbles", "loadingText", "Loading more..."]], template: function LevelListComponent_Template(rf, ctx) {
       if (rf & 1) {
         \u0275\u0275elementStart(0, "ion-header")(1, "ion-toolbar")(2, "ion-buttons", 0);
         \u0275\u0275element(3, "ion-back-button", 1);
         \u0275\u0275elementEnd()()();
         \u0275\u0275elementStart(4, "ion-content")(5, "div", 2)(6, "ion-list");
-        \u0275\u0275repeaterCreate(7, LevelListComponent_For_8_Template, 6, 2, "ion-item", null, _forTrack0);
+        \u0275\u0275repeaterCreate(7, LevelListComponent_For_8_Template, 15, 13, "ion-item", null, _forTrack0);
         \u0275\u0275elementEnd();
         \u0275\u0275template(9, LevelListComponent_Conditional_9_Template, 2, 0, "p", 3)(10, LevelListComponent_Conditional_10_Template, 3, 1, "ion-infinite-scroll", 4);
         \u0275\u0275elementEnd()();
@@ -387,12 +406,14 @@ var LevelListComponent = class _LevelListComponent {
       IonItem,
       IonList,
       IonLabel,
-      IonRow
+      IonRow,
+      DecimalPipe,
+      DatePipe
     ] });
   }
 };
 (() => {
-  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LevelListComponent, { className: "LevelListComponent", filePath: "src\\app\\components\\statistics\\level-list\\level-list.component.ts", lineNumber: 42 });
+  (typeof ngDevMode === "undefined" || ngDevMode) && \u0275setClassDebugInfo(LevelListComponent, { className: "LevelListComponent", filePath: "src\\app\\components\\statistics\\level-list\\level-list.component.ts", lineNumber: 45 });
 })();
 
 // src/app/components/statistics/statistics-tab.routes.ts
@@ -409,4 +430,4 @@ var ROUTES = [
 export {
   ROUTES
 };
-//# sourceMappingURL=statistics-tab.routes-5PF3UTT2.js.map
+//# sourceMappingURL=statistics-tab.routes-U4RQY3KF.js.map

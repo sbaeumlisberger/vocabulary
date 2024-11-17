@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/models/practice-level.model.ts"],
+  "sourcesContent": ["export enum PracticeLevel {\n  NewOrNeverCorrect,\n  AtLeastOnceCorrect,\n  Improving,\n  Good,\n  Excellent,\n}\n"],
+  "mappings": ";AAAA,IAAY;CAAZ,SAAYA,gBAAa;AACvB,EAAAA,eAAAA,eAAA,mBAAA,IAAA,CAAA,IAAA;AACA,EAAAA,eAAAA,eAAA,oBAAA,IAAA,CAAA,IAAA;AACA,EAAAA,eAAAA,eAAA,WAAA,IAAA,CAAA,IAAA;AACA,EAAAA,eAAAA,eAAA,MAAA,IAAA,CAAA,IAAA;AACA,EAAAA,eAAAA,eAAA,WAAA,IAAA,CAAA,IAAA;AACF,GANY,kBAAA,gBAAa,CAAA,EAAA;",
+  "names": ["PracticeLevel"]
+}

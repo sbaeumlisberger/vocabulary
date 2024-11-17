@@ -1,6 +1,6 @@
 import {
   ɵɵdefineInjectable
-} from "./chunk-YWMOKFFN.js";
+} from "./chunk-CP2L26DD.js";
 import {
   __commonJS,
   __toESM
@@ -5919,4 +5919,4 @@ dexie/dist/dexie.js:
   PERFORMANCE OF THIS SOFTWARE.
   ***************************************************************************** *)
 */
-//# sourceMappingURL=chunk-SAKA2635.js.map
+//# sourceMappingURL=chunk-DRFQZRDU.js.map

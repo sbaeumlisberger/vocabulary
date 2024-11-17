@@ -1,20 +1,20 @@
 import {
   SettingsService
-} from "./chunk-OWUO6QBT.js";
+} from "./chunk-N6PL7VJI.js";
 import {
   VocabularyService
-} from "./chunk-UM2YYBV7.js";
-import "./chunk-SAKA2635.js";
+} from "./chunk-YJDAYYSX.js";
+import "./chunk-DRFQZRDU.js";
 import {
   ReminderService,
   UpdateService
-} from "./chunk-HV6ZPBVO.js";
-import "./chunk-NTW7OCZU.js";
-import "./chunk-LNQB3EUR.js";
+} from "./chunk-4NYJEFBS.js";
+import "./chunk-QQUQBA7I.js";
+import "./chunk-AXEYWA6G.js";
 import {
   Theme,
   ThemeService
-} from "./chunk-RL753YUK.js";
+} from "./chunk-S3F3BUGQ.js";
 import {
   AlertController,
   FormsModule,
@@ -58,7 +58,7 @@ import {
   ɵɵtwoWayBindingSet,
   ɵɵtwoWayListener,
   ɵɵtwoWayProperty
-} from "./chunk-YWMOKFFN.js";
+} from "./chunk-CP2L26DD.js";
 import "./chunk-AGXZWMF6.js";
 import "./chunk-KQEJHESJ.js";
 import "./chunk-XAVXJ42G.js";
@@ -325,7 +325,7 @@ var SettingsComponent = class _SettingsComponent {
           return ctx.checkForUpdate();
         });
         \u0275\u0275elementStart(35, "ion-label");
-        \u0275\u0275text(36, "Vocabulary - Version 1.0.0");
+        \u0275\u0275text(36, "Vocabulary - Version 1.1.0");
         \u0275\u0275elementEnd();
         \u0275\u0275template(37, SettingsComponent_Conditional_37_Template, 1, 0, "ion-spinner");
         \u0275\u0275elementEnd();
@@ -386,4 +386,4 @@ var ROUTES = [
 export {
   ROUTES
 };
-//# sourceMappingURL=settings-tab.routes-GEK52NMY.js.map
+//# sourceMappingURL=settings-tab.routes-4ZWYHNUH.js.map

@@ -2,7 +2,7 @@ import {
   Subject,
   filter,
   map
-} from "./chunk-YWMOKFFN.js";
+} from "./chunk-CP2L26DD.js";
 
 // node_modules/ng-event-bus/fesm2022/ng-event-bus.mjs
 var MetaData = class {
@@ -126,4 +126,4 @@ var NgEventBus = class {
 export {
   NgEventBus
 };
-//# sourceMappingURL=chunk-LNQB3EUR.js.map
+//# sourceMappingURL=chunk-AXEYWA6G.js.map

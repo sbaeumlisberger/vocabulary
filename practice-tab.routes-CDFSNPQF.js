@@ -1,9 +1,9 @@
 import {
   takeUntilDestroyed
-} from "./chunk-WH3V3LTG.js";
+} from "./chunk-TTGGLO62.js";
 import {
   PracticeLevel
-} from "./chunk-A4CYRQ7C.js";
+} from "./chunk-AKFMU4OS.js";
 import {
   addIcons,
   arrowBackOutline,
@@ -15,10 +15,10 @@ import {
 } from "./chunk-EYXWBQOK.js";
 import {
   VocabularyDB
-} from "./chunk-SAKA2635.js";
+} from "./chunk-DRFQZRDU.js";
 import {
   ThemeService
-} from "./chunk-RL753YUK.js";
+} from "./chunk-S3F3BUGQ.js";
 import {
   ActivatedRoute,
   DecimalPipe,
@@ -81,7 +81,7 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate,
   ɵɵtextInterpolate1
-} from "./chunk-YWMOKFFN.js";
+} from "./chunk-CP2L26DD.js";
 import "./chunk-AGXZWMF6.js";
 import "./chunk-KQEJHESJ.js";
 import "./chunk-XAVXJ42G.js";
@@ -192,18 +192,18 @@ var PracticeService = class _PracticeService {
   calcPracticeLevel(vocable) {
     const correntRate = vocable.correctCount / vocable.practicedCount;
     if (vocable.practicedCount >= 10 && correntRate > 0.9) {
-      return PracticeLevel.VeryGood;
+      return PracticeLevel.Excellent;
     }
     if (vocable.practicedCount >= 5 && correntRate > 0.75) {
       return PracticeLevel.Good;
     }
     if (vocable.practicedCount >= 2 && correntRate > 0.5) {
-      return PracticeLevel.OnTheRightTrack;
+      return PracticeLevel.Improving;
     }
     if (vocable.correctCount >= 1) {
-      return PracticeLevel.AtLeastOnceKnown;
+      return PracticeLevel.AtLeastOnceCorrect;
     }
-    return PracticeLevel.NeverKnownOrPracticed;
+    return PracticeLevel.NewOrNeverCorrect;
   }
   static {
     this.\u0275fac = function PracticeService_Factory(__ngFactoryType__) {
@@ -630,4 +630,4 @@ var ROUTES = [
 export {
   ROUTES
 };
-//# sourceMappingURL=practice-tab.routes-ESZZ7OAG.js.map
+//# sourceMappingURL=practice-tab.routes-CDFSNPQF.js.map

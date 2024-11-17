@@ -18,7 +18,7 @@ import {
   ɵɵelementEnd,
   ɵɵelementStart,
   ɵɵtext
-} from "./chunk-YWMOKFFN.js";
+} from "./chunk-CP2L26DD.js";
 import "./chunk-AGXZWMF6.js";
 import "./chunk-KQEJHESJ.js";
 import "./chunk-XAVXJ42G.js";
@@ -90,19 +90,19 @@ var ROUTES = [
     children: [
       {
         path: "vocabulary",
-        loadChildren: () => import("./vocabulary-tab.routes-VD5FQ5AY.js").then((m) => m.ROUTES)
+        loadChildren: () => import("./vocabulary-tab.routes-CBJRNLUX.js").then((m) => m.ROUTES)
       },
       {
         path: "practice",
-        loadChildren: () => import("./practice-tab.routes-ESZZ7OAG.js").then((m) => m.ROUTES)
+        loadChildren: () => import("./practice-tab.routes-CDFSNPQF.js").then((m) => m.ROUTES)
       },
       {
         path: "statistics",
-        loadChildren: () => import("./statistics-tab.routes-5PF3UTT2.js").then((m) => m.ROUTES)
+        loadChildren: () => import("./statistics-tab.routes-U4RQY3KF.js").then((m) => m.ROUTES)
       },
       {
         path: "settings",
-        loadChildren: () => import("./settings-tab.routes-GEK52NMY.js").then((m) => m.ROUTES)
+        loadChildren: () => import("./settings-tab.routes-4ZWYHNUH.js").then((m) => m.ROUTES)
       }
     ]
   }
@@ -110,4 +110,4 @@ var ROUTES = [
 export {
   ROUTES
 };
-//# sourceMappingURL=tabs-routes-5CMXG4BK.js.map
+//# sourceMappingURL=tabs-routes-PGQFIIHR.js.map

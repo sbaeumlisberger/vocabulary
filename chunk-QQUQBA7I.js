@@ -4,7 +4,7 @@ import {
   setClassMetadata,
   ɵɵdefineInjector,
   ɵɵdefineNgModule
-} from "./chunk-YWMOKFFN.js";
+} from "./chunk-CP2L26DD.js";
 
 // node_modules/ngx-webstorage-service/fesm2020/ngx-webstorage-service.mjs
 var ProxyStorageService = class _ProxyStorageService {
@@ -393,4 +393,4 @@ StorageServiceModule.\u0275inj = /* @__PURE__ */ \u0275\u0275defineInjector({});
 export {
   LOCAL_STORAGE
 };
-//# sourceMappingURL=chunk-NTW7OCZU.js.map
+//# sourceMappingURL=chunk-QQUQBA7I.js.map

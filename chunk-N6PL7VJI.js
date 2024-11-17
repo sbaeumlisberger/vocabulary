@@ -1,10 +1,10 @@
 import {
   LOCAL_STORAGE
-} from "./chunk-NTW7OCZU.js";
+} from "./chunk-QQUQBA7I.js";
 import {
   ɵɵdefineInjectable,
   ɵɵinject
-} from "./chunk-YWMOKFFN.js";
+} from "./chunk-CP2L26DD.js";
 
 // src/app/services/settings.service.ts
 var SettingsService = class _SettingsService {
@@ -33,4 +33,4 @@ var SettingsService = class _SettingsService {
 export {
   SettingsService
 };
-//# sourceMappingURL=chunk-OWUO6QBT.js.map
+//# sourceMappingURL=chunk-N6PL7VJI.js.map

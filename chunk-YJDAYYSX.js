@@ -1,13 +1,13 @@
 import {
   VocabularyDB
-} from "./chunk-SAKA2635.js";
+} from "./chunk-DRFQZRDU.js";
 import {
   NgEventBus
-} from "./chunk-LNQB3EUR.js";
+} from "./chunk-AXEYWA6G.js";
 import {
   ɵɵdefineInjectable,
   ɵɵinject
-} from "./chunk-YWMOKFFN.js";
+} from "./chunk-CP2L26DD.js";
 import {
   __async
 } from "./chunk-UL2P3LPA.js";
@@ -121,4 +121,4 @@ export {
   VocabularyUpdatedEvent,
   VocabularyService
 };
-//# sourceMappingURL=chunk-UM2YYBV7.js.map
+//# sourceMappingURL=chunk-YJDAYYSX.js.map

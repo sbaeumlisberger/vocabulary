@@ -1,6 +1,6 @@
 import {
   PracticeLevel
-} from "./chunk-A4CYRQ7C.js";
+} from "./chunk-AKFMU4OS.js";
 import {
   add,
   addIcons,
@@ -13,21 +13,21 @@ import {
 } from "./chunk-EYXWBQOK.js";
 import {
   SettingsService
-} from "./chunk-OWUO6QBT.js";
+} from "./chunk-N6PL7VJI.js";
 import {
   VocabularyAddedEvent,
   VocabularyImportedEvent,
   VocabularyService,
   VocabularyUpdatedEvent
-} from "./chunk-UM2YYBV7.js";
-import "./chunk-SAKA2635.js";
-import "./chunk-NTW7OCZU.js";
+} from "./chunk-YJDAYYSX.js";
+import "./chunk-DRFQZRDU.js";
+import "./chunk-QQUQBA7I.js";
 import {
   NgEventBus
-} from "./chunk-LNQB3EUR.js";
+} from "./chunk-AXEYWA6G.js";
 import {
   ThemeService
-} from "./chunk-RL753YUK.js";
+} from "./chunk-S3F3BUGQ.js";
 import {
   FormsModule,
   IonButton,
@@ -78,7 +78,7 @@ import {
   ɵɵtwoWayBindingSet,
   ɵɵtwoWayListener,
   ɵɵtwoWayProperty
-} from "./chunk-YWMOKFFN.js";
+} from "./chunk-CP2L26DD.js";
 import "./chunk-AGXZWMF6.js";
 import "./chunk-KQEJHESJ.js";
 import "./chunk-XAVXJ42G.js";
@@ -105,7 +105,7 @@ var Vocable = class {
     this.wasCorrect = false;
     this.practicedCount = 0;
     this.correctCount = 0;
-    this.practiceLevel = PracticeLevel.NeverKnownOrPracticed;
+    this.practiceLevel = PracticeLevel.NewOrNeverCorrect;
     this.score = 0;
     this.foreignMeaning = foreignMeaning;
     this.nativeMeanings = nativeMeanings;
@@ -406,29 +406,29 @@ var VocabularyListPageComponent = class _VocabularyListPageComponent {
   }
   toIcon(vocable) {
     switch (vocable.practiceLevel) {
-      case PracticeLevel.NeverKnownOrPracticed:
+      case PracticeLevel.NewOrNeverCorrect:
         return "rocket-outline";
-      case PracticeLevel.AtLeastOnceKnown:
+      case PracticeLevel.AtLeastOnceCorrect:
         return "school-outline";
-      case PracticeLevel.OnTheRightTrack:
+      case PracticeLevel.Improving:
         return "trending-up-outline";
       case PracticeLevel.Good:
         return "checkmark-outline";
-      case PracticeLevel.VeryGood:
+      case PracticeLevel.Excellent:
         return "trophy-outline";
     }
   }
   toColor(vocable) {
     switch (vocable.practiceLevel) {
-      case PracticeLevel.NeverKnownOrPracticed:
+      case PracticeLevel.NewOrNeverCorrect:
         return "var(--ion-color-medium)";
-      case PracticeLevel.AtLeastOnceKnown:
+      case PracticeLevel.AtLeastOnceCorrect:
         return "var(--ion-color-warning)";
-      case PracticeLevel.OnTheRightTrack:
+      case PracticeLevel.Improving:
         return "var(--ion-color-tertiary)";
       case PracticeLevel.Good:
         return "var(--ion-color-success)";
-      case PracticeLevel.VeryGood:
+      case PracticeLevel.Excellent:
         return "var(--ion-color-success)";
     }
   }
@@ -533,4 +533,4 @@ var ROUTES = [
 export {
   ROUTES
 };
-//# sourceMappingURL=vocabulary-tab.routes-VD5FQ5AY.js.map
+//# sourceMappingURL=vocabulary-tab.routes-CBJRNLUX.js.map
