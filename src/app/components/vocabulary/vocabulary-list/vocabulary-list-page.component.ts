@@ -44,7 +44,6 @@ import { SettingsService } from 'src/app/services/settings.service';
   selector: 'vt-vocabulary-list-page',
   templateUrl: './vocabulary-list-page.component.html',
   styleUrl: './vocabulary-list-page.component.scss',
-  standalone: true,
   imports: [
     IonHeader,
     IonToolbar,

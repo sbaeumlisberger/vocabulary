@@ -20,7 +20,6 @@ import { DecimalPipe } from '@angular/common';
   selector: 'vt-statistics-overview-page',
   templateUrl: './statistics-overview-page.component.html',
   styleUrls: ['./statistics-overview-page.component.scss'],
-  standalone: true,
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonIcon, IonProgressBar, DecimalPipe],
 })
 export class SatisticsOverviewPageComponent implements ViewWillEnter {

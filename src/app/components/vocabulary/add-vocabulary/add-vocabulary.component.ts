@@ -23,7 +23,6 @@ import { FormsModule } from '@angular/forms';
   selector: 'vt-add-vocabulary',
   templateUrl: './add-vocabulary.component.html',
   styleUrls: ['./add-vocabulary.component.scss'],
-  standalone: true,
   imports: [
     IonHeader,
     IonToolbar,

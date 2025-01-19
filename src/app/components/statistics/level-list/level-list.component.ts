@@ -25,7 +25,6 @@ import { VocabularyService } from 'src/app/services/vocabulary.service';
   selector: 'vt-level-list',
   templateUrl: './level-list.component.html',
   styleUrls: ['./level-list.component.scss'],
-  standalone: true,
   imports: [
     IonButtons,
     IonBackButton,

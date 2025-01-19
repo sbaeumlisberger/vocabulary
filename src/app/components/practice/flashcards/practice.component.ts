@@ -44,7 +44,6 @@ enum PracticeMode {
   selector: 'vt-practice',
   templateUrl: './practice.component.html',
   styleUrls: ['./practice.component.scss'],
-  standalone: true,
   imports: [
     IonButton,
     IonIcon,

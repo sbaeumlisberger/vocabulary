@@ -8,7 +8,6 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
   selector: 'vt-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
-  standalone: true,
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent implements OnInit {

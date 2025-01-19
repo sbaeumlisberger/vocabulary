@@ -16,7 +16,6 @@ import { RouterLink } from '@angular/router';
   selector: 'vt-pratice-overview-page',
   templateUrl: './pratice-overview-page.component.html',
   styleUrls: ['./pratice-overview-page.component.scss'],
-  standalone: true,
   imports: [
     IonHeader,
     IonToolbar,

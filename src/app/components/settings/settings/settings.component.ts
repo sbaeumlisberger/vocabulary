@@ -30,7 +30,6 @@ import { Time } from '@angular/common';
   selector: 'vt-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
-  standalone: true,
   imports: [
     IonHeader,
     IonToolbar,
